@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JWAT Enterprises Inc - AI-Powered Business Growth & Sales Funnel Consulting</title>
+    <meta name="description" content="AI-Powered Business Growth & Sales Funnel Consulting for Small Businesses. Expert guidance in Sales, Marketing, Financial Management & Tax Services. Available 24/7.">
+    <meta name="keywords" content="business consulting, sales funnel, AI consulting, small business, marketing, financial management, tax services, Tampa">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --navy: #1a365d;
+            --navy-light: #2d5a8c;
+            --gold: #ffd700;
+            --gold-hover: #ffed4e;
+            --dark: #0d1b2a;
+            --gray-bg: #f8f9fa;
+            --text: #333;
+            --text-muted: #666;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+            color: white;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+            color: var(--gold);
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: white;
+            font-size: 13px;
+            display: block;
+            font-weight: normal;
+            letter-spacing: 0;
+            opacity: 0.85;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--gold);
+        }
+
+        .nav-cta {
+            background: var(--gold);
+            color: var(--navy) !important;
+            padding: 8px 20px;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: background 0.3s !important;
+        }
+
+        .nav-cta:hover {
+            background: var(--gold-hover) !important;
+            color: var(--navy) !important;
+        }
+
+        /* Hamburger */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 2px;
+            background: white;
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+
+        .mobile-nav {
+            display: none;
+            background: var(--navy);
+            padding: 20px;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .mobile-nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .mobile-nav a:hover {
+            color: var(--gold);
+        }
+
+        .mobile-nav.open {
+            display: flex;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+            color: white;
+            padding: 110px 20px 90px;
+            text-align: center;
+        }
+
+        .hero-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255,215,0,0.15);
+            border: 1px solid rgba(255,215,0,0.4);
+            color: var(--gold);
+            padding: 6px 18px;
+            border-radius: 20px;
+            font-size: 14px;
+            margin-bottom: 25px;
+            letter-spacing: 0.5px;
+        }
+
+        h1 {
+            font-size: 50px;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            font-weight: 800;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 15px;
+            opacity: 0.92;
+        }
+
+        .hero-sub {
+            font-size: 15px !important;
+            opacity: 0.75 !important;
+            margin-bottom: 40px !important;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 50px;
+        }
+
+        .cta-button {
+            background: var(--gold);
+            color: var(--navy);
+            padding: 16px 40px;
+            font-size: 17px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s, transform 0.2s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            background: var(--gold-hover);
+            transform: translateY(-2px);
+        }
+
+        .cta-button.outline {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .cta-button.outline:hover {
+            background: white;
+            color: var(--navy);
+        }
+
+        .cta-button.dark {
+            background: var(--navy);
+            color: white;
+        }
+
+        .cta-button.dark:hover {
+            background: var(--dark);
+        }
+
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background: rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.25);
+            color: white;
+            padding: 10px 18px;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        /* ===== SECTIONS ===== */
+        .section {
+            padding: 80px 20px;
+        }
+
+        .section-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section h2 {
+            font-size: 36px;
+            margin-bottom: 15px;
+            text-align: center;
+            color: var(--navy);
+        }
+
+        .section-sub {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 17px;
+            margin-bottom: 50px;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ===== SERVICES ===== */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: white;
+            padding: 35px 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .service-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.14);
+        }
+
+        .service-icon {
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+
+        .service-card h3 {
+            color: var(--navy);
+            margin-bottom: 12px;
+            font-size: 20px;
+        }
+
+        .service-card p {
+            color: var(--text-muted);
+            line-height: 1.8;
+            flex: 1;
+            margin-bottom: 20px;
+        }
+
+        .service-link {
+            display: inline-block;
+            color: var(--navy);
+            font-weight: bold;
+            font-size: 14px;
+            text-decoration: none;
+            border: 2px solid var(--navy);
+            padding: 8px 18px;
+            border-radius: 4px;
+            transition: background 0.3s, color 0.3s;
+            text-align: center;
+        }
+
+        .service-link:hover {
+            background: var(--navy);
+            color: white;
+        }
+
+        .service-link.gold {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: var(--navy);
+        }
+
+        .service-link.gold:hover {
+            background: var(--gold-hover);
+            border-color: var(--gold-hover);
+        }
+
+        /* ===== WHY US ===== */
+        .why-section {
+            background: var(--gray-bg);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .feature-item {
+            padding: 28px 25px;
+            background: white;
+            border-left: 4px solid var(--gold);
+            border-radius: 6px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .feature-item h3 {
+            color: var(--navy);
+            margin-bottom: 10px;
+            font-size: 17px;
+        }
+
+        .feature-item p {
+            color: var(--text-muted);
+            font-size: 15px;
+        }
+
+        /* ===== PARTNERS ===== */
+        .partners-section {
+            background: var(--gray-bg);
+        }
+
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+        }
+
+        .partner-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .partner-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.13);
+        }
+
+        .partner-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .partner-card h3 {
+            color: var(--navy);
+            margin-bottom: 12px;
+            font-size: 22px;
+        }
+
+        .partner-card p {
+            color: var(--text-muted);
+            margin-bottom: 25px;
+            font-size: 15px;
+            flex: 1;
+        }
+
+        .partner-link {
+            background: var(--navy);
+            color: white;
+            padding: 12px 28px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s, transform 0.2s;
+            font-size: 15px;
+        }
+
+        .partner-link:hover {
+            background: var(--navy-light);
+            transform: translateY(-2px);
+        }
+
+        .partner-link.gold {
+            background: var(--gold);
+            color: var(--navy);
+        }
+
+        .partner-link.gold:hover {
+            background: var(--gold-hover);
+        }
+
+        /* ===== TAX SECTION ===== */
+        .tax-section {
+            background: linear-gradient(135deg, #1b4332 0%, #2d6a4f 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .tax-section h2 {
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        .tax-section p {
+            color: rgba(255,255,255,0.88);
+            font-size: 17px;
+            margin-bottom: 35px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .tax-features {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .tax-feature {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            padding: 12px 22px;
+            border-radius: 6px;
+            font-size: 15px;
+        }
+
+        /* ===== SCALE CTA ===== */
+        .scale-section {
+            background: white;
+            text-align: center;
+        }
+
+        .scale-section h2 {
+            margin-bottom: 15px;
+        }
+
+        .scale-section p {
+            color: var(--text-muted);
+            font-size: 18px;
+            margin-bottom: 35px;
+        }
+
+        .scale-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* ===== CONTACT ===== */
+        .contact-section {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+            color: white;
+        }
+
+        .contact-section h2 {
+            color: white;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .contact-section .section-sub {
+            color: rgba(255,255,255,0.8);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            margin-bottom: 45px;
+        }
+
+        .contact-item {
+            padding: 25px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.15);
+            text-align: center;
+        }
+
+        .contact-item h3 {
+            color: var(--gold);
+            margin-bottom: 12px;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .contact-item p {
+            font-size: 15px;
+            opacity: 0.9;
+        }
+
+        .contact-item a {
+            color: var(--gold);
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .contact-item a:hover {
+            text-decoration: underline;
+        }
+
+        .contact-item .sub-text {
+            font-size: 13px;
+            opacity: 0.65;
+            margin-top: 6px;
+            display: block;
+        }
+
+        .contact-cta {
+            text-align: center;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 35px 20px;
+        }
+
+        footer p {
+            font-size: 14px;
+            opacity: 0.7;
+            margin-bottom: 8px;
+        }
+
+        footer p:first-child {
+            font-weight: bold;
+            font-size: 16px;
+            opacity: 1;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin: 15px 0;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            font-size: 13px;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        .footer-divider {
+            border: none;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin: 20px auto;
+            max-width: 400px;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 32px;
+            }
+
+            .hero {
+                padding: 70px 20px 60px;
+            }
+
+            .hero p {
+                font-size: 17px;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .section {
+                padding: 55px 20px;
+            }
+
+            .section h2 {
+                font-size: 28px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .cta-button {
+                width: 100%;
+                max-width: 300px;
+                text-align: center;
+            }
+
+            .scale-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== HEADER ===== -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                JWAT ENTERPRISES INC
+                <span>AI-Powered Business Consulting</span>
+            </div>
+            <nav>
+                <a href="#services">Services</a>
+                <a href="#why-us">Why Us</a>
+                <a href="#partners">Partners</a>
+                <a href="#tax">Tax Services</a>
+                <a href="#contact" class="nav-cta">Get Started</a>
+            </nav>
+            <div class="hamburger" onclick="toggleMenu()" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <div class="mobile-nav" id="mobileNav">
+            <a href="#services" onclick="toggleMenu()">Services</a>
+            <a href="#why-us" onclick="toggleMenu()">Why Us</a>
+            <a href="#partners" onclick="toggleMenu()">Partners</a>
+            <a href="#tax" onclick="toggleMenu()">Tax Services</a>
+            <a href="#contact" onclick="toggleMenu()">Contact</a>
+        </div>
+    </header>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-badge">AI-Powered Business Growth</div>
+            <h1>Scale Your Business Faster with Expert AI-Driven Consulting</h1>
+            <p>Tailored solutions in Sales, Marketing, Financial Management & Tax Services</p>
+            <p class="hero-sub">24/7 AI-Powered Receptionist · Trusted by Startups & SMBs · Results-Driven</p>
+            <div class="hero-buttons">
+                <a href="#contact" class="cta-button">Start Free Consultation</a>
+                <a href="tel:813-321-5686" class="cta-button outline">📞 Call 813-321-5686</a>
+            </div>
+            <div class="trust-badges">
+                <div class="badge">✓ 24/7 AI Support</div>
+                <div class="badge">✓ Expert Guidance</div>
+                <div class="badge">✓ Proven Results</div>
+                <div class="badge">✓ SMB Specialists</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SERVICES ===== -->
+    <section class="section" id="services">
+        <div class="section-inner">
+            <h2>Our Core Services</h2>
+            <p class="section-sub">Everything your business needs to grow — under one roof.</p>
+            <div class="services-grid">
+
+                <div class="service-card">
+                    <div class="service-icon">📈</div>
+                    <h3>Sales Strategy & Funnel Optimization</h3>
+                    <p>Build high-converting sales funnels that turn prospects into paying clients. We identify gaps in your process and implement proven systems to grow revenue consistently.</p>
+                    <a href="#contact" class="service-link">Book a Sales Audit →</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🎯</div>
+                    <h3>Marketing Optimization</h3>
+                    <p>Data-driven campaigns tailored to your target market. From digital presence and lead generation to brand positioning — we amplify your reach and reduce ad spend waste.</p>
+                    <a href="#contact" class="service-link">Get a Marketing Plan →</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">💰</div>
+                    <h3>Financial Management & Business Credit</h3>
+                    <p>Strategic financial planning, cash flow analysis, and business credit building. Access capital, reduce costs, and maximize profitability with expert guidance.</p>
+                    <a href="https://nav.nkwcmr.net/c/6782322/1849064/2410" target="_blank" rel="noopener" class="service-link gold">Build Business Credit →</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🏛️</div>
+                    <h3>Tax Services & Compliance</h3>
+                    <p>Expert tax strategy, preparation, and compliance for small businesses. Optimize your tax position, minimize liability, and stay fully compliant with confidence.</p>
+                    <a href="https://form.jotform.com/250436502189153" target="_blank" rel="noopener" class="service-link gold">Get Tax Help Now →</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== WHY US ===== -->
+    <section class="section why-section" id="why-us">
+        <div class="section-inner">
+            <h2>Why Choose JWAT Enterprises</h2>
+            <p class="section-sub">We're not just consultants — we're invested in your growth.</p>
+            <div class="features-grid">
+
+                <div class="feature-item">
+                    <h3>🤖 24/7 AI Automation</h3>
+                    <p>Never miss a lead. Our AI-powered phone receptionist handles inquiries around the clock, ensuring every opportunity is captured and responded to immediately.</p>
+                </div>
+
+                <div class="feature-item">
+                    <h3>🎯 4-in-1 Solution</h3>
+                    <p>The only integrated platform combining Sales, Marketing, Finance & Tax. One partner, complete business growth — no more juggling multiple vendors.</p>
+                </div>
+
+                <div class="feature-item">
+                    <h3>✅ Vetted Trusted Partners</h3>
+                    <p>We connect you with industry-leading, pre-vetted service providers. Every partner is validated so you can access experts you can actually trust.</p>
+                </div>
+
+                <div class="feature-item">
+                    <h3>📊 Data-Driven Decisions</h3>
+                    <p>Every recommendation is backed by real market data, verified analytics, and credible insights tailored to your specific industry and business stage.</p>
+                </div>
+
+                <div class="feature-item">
+                    <h3>💼 SMB-Focused Expertise</h3>
+                    <p>We specialize exclusively in startups and small businesses. We understand your unique challenges, constraints, and growth ambitions — and we speak your language.</p>
+                </div>
+
+                <div class="feature-item">
+                    <h3>⚡ Aligned Incentives</h3>
+                    <p>Our affiliate model means we win when you win. We only recommend solutions we stand behind — your growth is our business model.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PARTNERS ===== -->
+    <section class="section partners-section" id="partners">
+        <div class="section-inner">
+            <h2>Our Trusted Partners</h2>
+            <p class="section-sub">Industry-leading tools and services — hand-picked to fuel your business growth.</p>
+            <div class="partners-grid">
+
+                <div class="partner-card">
+                    <div class="partner-icon">🏦</div>
+                    <h3>Nav</h3>
+                    <p>The #1 business credit and financial intelligence platform. Build your business credit profile, monitor your score, and access better financing rates — faster.</p>
+                    <a href="https://nav.nkwcmr.net/c/6782322/1849064/2410" target="_blank" rel="noopener" class="partner-link gold">Get Started with Nav →</a>
+                </div>
+
+                <div class="partner-card">
+                    <div class="partner-icon">💵</div>
+                    <h3>ROK Financial</h3>
+                    <p>Small business financing made simple. Get access to working capital, equipment financing, and business loans with flexible terms built for growth-stage companies.</p>
+                    <a href="https://go.mypartner.io/business-financing/?ref=001Qk00000dxUurIAE" target="_blank" rel="noopener" class="partner-link">Explore Business Financing →</a>
+                </div>
+
+                <div class="partner-card">
+                    <div class="partner-icon">🚀</div>
+                    <h3>Upfirst</h3>
+                    <p>Launch and manage your business entity the right way. Upfirst makes business formation, registered agent services, and compliance simple for entrepreneurs.</p>
+                    <a href="https://upfirst.ai?plid=135267" target="_blank" rel="noopener" class="partner-link">Start with Upfirst →</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== TAX CTA SECTION ===== -->
+    <section class="section tax-section" id="tax">
+        <div class="section-inner">
+            <h2>🏛️ Tax Services for Small Businesses</h2>
+            <p>Don't leave money on the table. Our tax experts help small businesses and startups minimize liability, stay compliant, and plan strategically — all year round.</p>
+            <div class="tax-features">
+                <div class="tax-feature">✓ Business Tax Preparation</div>
+                <div class="tax-feature">✓ Quarterly Estimated Taxes</div>
+                <div class="tax-feature">✓ Tax Strategy & Planning</div>
+                <div class="tax-feature">✓ IRS Compliance</div>
+                <div class="tax-feature">✓ Deduction Optimization</div>
+            </div>
+            <a href="https://form.jotform.com/250436502189153" target="_blank" rel="noopener" class="cta-button">Complete Tax Intake Form →</a>
+        </div>
+    </section>
+
+    <!-- ===== SCALE CTA ===== -->
+    <section class="section scale-section">
+        <div class="section-inner">
+            <h2>Ready to Scale Your Business?</h2>
+            <p>Talk to our AI consultant today — available 24/7 to map out your growth strategy.</p>
+            <div class="scale-buttons">
+                <a href="#contact" class="cta-button">Start Free Consultation</a>
+                <a href="tel:813-321-5686" class="cta-button dark">📞 Call 813-321-5686</a>
+                <a href="mailto:biz@jwatenterprisesinc.com" class="cta-button outline" style="border-color: var(--navy); color: var(--navy);">✉ Send an Email</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section class="contact-section section" id="contact">
+        <div class="section-inner">
+            <h2>Get in Touch</h2>
+            <p class="section-sub">We respond fast. Reach out any way that's easiest for you.</p>
+            <div class="contact-grid">
+
+                <div class="contact-item">
+                    <h3>📞 Phone</h3>
+                    <a href="tel:813-321-5686">813-321-5686</a>
+                    <span class="sub-text">AI-Powered Receptionist · 24/7 Available</span>
+                </div>
+
+                <div class="contact-item">
+                    <h3>✉ Email</h3>
+                    <a href="mailto:biz@jwatenterprisesinc.com">biz@jwatenterprisesinc.com</a>
+                    <span class="sub-text">Typically responds within 1 business day</span>
+                </div>
+
+                <div class="contact-item">
+                    <h3>🌐 Website</h3>
+                    <a href="https://www.jwatenterprisesinc.com" target="_blank">jwatenterprisesinc.com</a>
+                    <span class="sub-text">Resources, tools & more</span>
+                </div>
+
+                <div class="contact-item">
+                    <h3>📋 Tax Intake</h3>
+                    <a href="https://form.jotform.com/250436502189153" target="_blank">Complete Tax Form</a>
+                    <span class="sub-text">Start your tax consultation</span>
+                </div>
+
+            </div>
+            <div class="contact-cta">
+                <a href="https://form.jotform.com/250436502189153" target="_blank" rel="noopener" class="cta-button" style="font-size: 16px;">
+                    Schedule a Consultation →
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <p>JWAT ENTERPRISES INC</p>
+        <p>AI-Powered Business Growth & Sales Funnel Consulting</p>
+        <div class="footer-links">
+            <a href="#services">Services</a>
+            <a href="#why-us">Why Us</a>
+            <a href="#partners">Partners</a>
+            <a href="#tax">Tax Services</a>
+            <a href="#contact">Contact</a>
+            <a href="mailto:biz@jwatenterprisesinc.com">biz@jwatenterprisesinc.com</a>
+            <a href="tel:813-321-5686">813-321-5686</a>
+        </div>
+        <hr class="footer-divider">
+        <p>&copy; 2026 JWAT Enterprises Inc. All rights reserved.</p>
+        <p>Empowering startups and small businesses through AI-driven consulting.</p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const nav = document.getElementById('mobileNav');
+            nav.classList.toggle('open');
+        }
+
+        // Close mobile menu on scroll
+        window.addEventListener('scroll', () => {
+            document.getElementById('mobileNav').classList.remove('open');
+        });
+    </script>
+
+</body>
+</html>
