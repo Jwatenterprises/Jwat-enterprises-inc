@@ -941,5 +941,403 @@
         });
     </script>
 
+
+    <!-- ===== JWAT VIRTUAL CONSULTANT WIDGET ===== -->
+    <style>
+        #jwat-chat-bubble {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, #1a365d, #2d5a8c);
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(26,54,93,0.45);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            z-index: 9998;
+            transition: transform 0.2s, box-shadow 0.2s;
+            animation: jwat-pulse 2.5s infinite;
+        }
+        #jwat-chat-bubble:hover { transform: scale(1.1); }
+        @keyframes jwat-pulse {
+            0%,100% { box-shadow: 0 4px 20px rgba(26,54,93,0.45); }
+            50%      { box-shadow: 0 4px 32px rgba(255,215,0,0.55), 0 4px 20px rgba(26,54,93,0.45); }
+        }
+        .jwat-bubble-badge {
+            position: absolute;
+            top: -4px; right: -4px;
+            width: 20px; height: 20px;
+            background: #ffd700;
+            border-radius: 50%;
+            font-size: 11px;
+            color: #1a365d;
+            font-weight: bold;
+            display: flex; align-items: center; justify-content: center;
+        }
+        #jwat-chat-window {
+            position: fixed;
+            bottom: 108px; right: 28px;
+            width: 375px;
+            max-height: 570px;
+            background: white;
+            border-radius: 18px;
+            box-shadow: 0 12px 50px rgba(0,0,0,0.18);
+            display: none;
+            flex-direction: column;
+            z-index: 9999;
+            overflow: hidden;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        #jwat-chat-window.jwat-open {
+            display: flex;
+            animation: jwat-slideup 0.25s ease;
+        }
+        @keyframes jwat-slideup {
+            from { opacity: 0; transform: translateY(18px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        .jwat-header {
+            background: linear-gradient(135deg, #1a365d, #2d5a8c);
+            color: white;
+            padding: 15px 18px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .jwat-header-avatar {
+            width: 44px; height: 44px;
+            background: #ffd700;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 22px; flex-shrink: 0;
+        }
+        .jwat-header-info strong { display: block; font-size: 15px; }
+        .jwat-header-info span   { font-size: 12px; opacity: 0.82; }
+        .jwat-online { width:8px; height:8px; background:#4ade80; border-radius:50%; display:inline-block; margin-right:4px; }
+        .jwat-x {
+            margin-left: auto;
+            background: none; border: none;
+            color: white; font-size: 20px;
+            cursor: pointer; opacity: 0.75;
+        }
+        .jwat-x:hover { opacity: 1; }
+        .jwat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 16px 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            background: #f5f7fa;
+            max-height: 330px;
+        }
+        .jwat-row { display: flex; gap: 8px; align-items: flex-end; }
+        .jwat-row.agent { flex-direction: row; }
+        .jwat-row.user  { flex-direction: row-reverse; }
+        .jwat-av {
+            width: 30px; height: 30px;
+            background: #1a365d;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 14px; flex-shrink: 0;
+        }
+        .jwat-bubble {
+            max-width: 82%;
+            padding: 11px 14px;
+            border-radius: 16px;
+            font-size: 14px;
+            line-height: 1.55;
+        }
+        .jwat-row.agent .jwat-bubble {
+            background: white;
+            color: #1a365d;
+            border-bottom-left-radius: 4px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+        }
+        .jwat-row.user .jwat-bubble {
+            background: #1a365d;
+            color: white;
+            border-bottom-right-radius: 4px;
+        }
+        .jwat-opts {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+            padding: 12px 14px 15px;
+            background: white;
+            border-top: 1px solid #eee;
+        }
+        .jwat-opt {
+            background: white;
+            border: 2px solid #1a365d;
+            color: #1a365d;
+            padding: 9px 13px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+            text-align: left;
+            transition: background 0.18s, color 0.18s;
+            font-family: inherit;
+        }
+        .jwat-opt:hover   { background: #1a365d; color: white; }
+        .jwat-opt.g { background: #ffd700; border-color: #ffd700; color: #1a365d; }
+        .jwat-opt.g:hover { background: #ffed4e; border-color: #ffed4e; }
+        .jwat-typing-row { display: flex; gap: 8px; align-items: flex-end; }
+        .jwat-dots {
+            background: white;
+            border-radius: 16px;
+            border-bottom-left-radius: 4px;
+            padding: 12px 16px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+            display: flex; gap: 4px; align-items: center;
+        }
+        .jwat-dots span {
+            width: 7px; height: 7px;
+            background: #bbb; border-radius: 50%;
+            animation: jwat-dot 1.2s infinite;
+        }
+        .jwat-dots span:nth-child(2) { animation-delay: 0.2s; }
+        .jwat-dots span:nth-child(3) { animation-delay: 0.4s; }
+        @keyframes jwat-dot {
+            0%,60%,100% { transform: translateY(0); }
+            30%          { transform: translateY(-5px); }
+        }
+        @media (max-width: 420px) {
+            #jwat-chat-window { width: calc(100vw - 20px); right: 10px; bottom: 95px; }
+            #jwat-chat-bubble { right: 14px; bottom: 14px; }
+        }
+    </style>
+
+    <!-- Floating Chat Bubble -->
+    <div id="jwat-chat-bubble" onclick="jwatOpen()" title="Talk to our AI Consultant">
+        <span>🤖</span>
+        <div class="jwat-bubble-badge">1</div>
+    </div>
+
+    <!-- Chat Window -->
+    <div id="jwat-chat-window">
+        <div class="jwat-header">
+            <div class="jwat-header-avatar">🤖</div>
+            <div class="jwat-header-info">
+                <strong>JWAT Virtual Consultant</strong>
+                <span><span class="jwat-online"></span>Online &bull; 24/7 Available</span>
+            </div>
+            <button class="jwat-x" onclick="jwatClose()">&#10005;</button>
+        </div>
+        <div class="jwat-messages" id="jwatMsgs"></div>
+        <div class="jwat-opts" id="jwatOpts"></div>
+    </div>
+
+    <script>
+    (function() {
+        var started = false;
+        var isOpen  = false;
+
+        var FLOWS = {
+            start: {
+                msg: "Hi! \uD83D\uDC4B I\u2019m your JWAT Virtual Consultant \u2014 available 24/7 to match you with the right solution.\n\nWhat brings you here today?",
+                opts: [
+                    { t: "\uD83D\uDCC8 Sales Strategy & Funnel Optimization",   n: "sales" },
+                    { t: "\uD83C\uDFAF Marketing & Lead Generation",             n: "marketing" },
+                    { t: "\uD83D\uDCB0 Business Financing or Credit",            n: "finance" },
+                    { t: "\uD83D\uDE80 Start or Register a Business",            n: "formation" },
+                    { t: "\uD83C\uDFDB\uFE0F Tax Services",                      n: "tax" },
+                    { t: "\uD83D\uDCDE Speak with Wayne directly",               n: "contact" }
+                ]
+            },
+            sales: {
+                msg: "A high-converting sales funnel is the engine of your business growth.\n\nWhat do you need most right now?",
+                opts: [
+                    { t: "CRM + pipeline to manage & track leads",              n: "ghl" },
+                    { t: "Automated sales funnels that convert",                n: "ghl" },
+                    { t: "A full strategy session with Wayne first",            n: "consult" }
+                ]
+            },
+            marketing: {
+                msg: "Smart marketing fills your funnel and keeps customers coming back.\n\nWhat\u2019s your goal?",
+                opts: [
+                    { t: "Email marketing & automation campaigns",              n: "ac" },
+                    { t: "Lead nurturing & customer journey automation",        n: "ac" },
+                    { t: "Full marketing strategy session with Wayne",          n: "consult" }
+                ]
+            },
+            finance: {
+                msg: "Access to capital and solid business credit unlocks your growth potential.\n\nWhat do you need?",
+                opts: [
+                    { t: "\uD83C\uDFE6 Build or improve my business credit",   n: "nav" },
+                    { t: "\uD83D\uDCB5 Get a business loan or working capital", n: "rok" },
+                    { t: "Both \u2014 I need credit AND financing",             n: "both_fin" }
+                ]
+            },
+            formation: {
+                msg: "Setting up your business correctly from day one protects your assets and opens doors to funding.\n\nUpfirst makes formation fast and simple in all 50 states.",
+                opts: [
+                    { t: "\uD83D\uDE80 Get Started with Upfirst \u2192",        n: "go", l: "https://upfirst.ai?plid=135267", g: true },
+                    { t: "Tell me more first",                                   n: "formation_info" }
+                ]
+            },
+            tax: {
+                msg: "Our tax experts help small businesses minimize liability, maximize deductions, and stay fully compliant year-round.\n\nComplete our quick intake form to get started:",
+                opts: [
+                    { t: "\uD83D\uDCCB Complete Tax Intake Form \u2192",         n: "go", l: "https://form.jotform.com/250436502189153", g: true },
+                    { t: "\uD83D\uDCDE Call us instead",                         n: "contact" }
+                ]
+            },
+            contact: {
+                msg: "Wayne is available to speak with you directly.\n\n\uD83D\uDCDE 813-321-5686 (24/7 AI Receptionist)\n\u2709\uFE0F biz@jwatenterprisesinc.com\n\nHow would you like to connect?",
+                opts: [
+                    { t: "\uD83D\uDCDE Call 813-321-5686",                       n: "go", l: "tel:813-321-5686", g: true },
+                    { t: "\u2709\uFE0F Send an Email",                           n: "go", l: "mailto:biz@jwatenterprisesinc.com" },
+                    { t: "\u2190 Back to main menu",                             n: "start" }
+                ]
+            },
+            ghl: {
+                msg: "GoHighLevel is the all-in-one platform our clients use to run their entire sales operation.\n\n\u2705 CRM & pipeline management\n\u2705 Drag-and-drop funnel builder\n\u2705 SMS, email & voicemail automation\n\u2705 14-day free trial",
+                opts: [
+                    { t: "\u26A1 Try GoHighLevel Free \u2192",                   n: "go", l: "https://www.gohighlevel.com", g: true },
+                    { t: "\uD83D\uDCCB Book a strategy session first",            n: "consult" }
+                ]
+            },
+            ac: {
+                msg: "ActiveCampaign is our top pick for marketing automation \u2014 used by 150,000+ businesses.\n\n\u2705 Visual email automation builder\n\u2705 Smart audience segmentation\n\u2705 Built-in CRM + lead scoring\n\u2705 Free 14-day trial",
+                opts: [
+                    { t: "\uD83D\uDCE3 Try ActiveCampaign Free \u2192",          n: "go", l: "https://www.activecampaign.com", g: true },
+                    { t: "\uD83D\uDCCB Book a strategy session first",            n: "consult" }
+                ]
+            },
+            nav: {
+                msg: "Nav gives you a complete business credit profile so you can access better financing, lower rates, and more funding options.\n\n\u2705 Free to start\n\u2705 Business credit monitoring\n\u2705 Financing marketplace with 100+ lenders",
+                opts: [
+                    { t: "\uD83C\uDFE6 Get Started with Nav \u2192",             n: "go", l: "https://nav.nkwcmr.net/c/6782322/1849064/2410", g: true },
+                    { t: "I also need business financing",                       n: "rok" }
+                ]
+            },
+            rok: {
+                msg: "ROK Financial connects you with the right lenders for working capital, equipment financing, and business loans.\n\n\u2705 One application \u2014 multiple lenders\n\u2705 Fast approvals\n\u2705 Flexible terms for SMBs",
+                opts: [
+                    { t: "\uD83D\uDCB5 Explore ROK Financial \u2192",            n: "go", l: "https://go.mypartner.io/business-financing/?ref=001Qk00000dxUurIAE", g: true },
+                    { t: "I also need to build business credit",                 n: "nav" }
+                ]
+            },
+            both_fin: {
+                msg: "Great strategy \u2014 many of our clients do both.\n\nStart with Nav to build your credit foundation, then leverage ROK Financial for immediate capital access. Both work together.",
+                opts: [
+                    { t: "\uD83C\uDFE6 Start with Nav (credit) \u2192",          n: "go", l: "https://nav.nkwcmr.net/c/6782322/1849064/2410", g: true },
+                    { t: "\uD83D\uDCB5 Go to ROK Financial (loans) \u2192",      n: "go", l: "https://go.mypartner.io/business-financing/?ref=001Qk00000dxUurIAE" }
+                ]
+            },
+            formation_info: {
+                msg: "Upfirst handles everything:\n\n\u2705 LLC or Corporation formation\n\u2705 Registered agent services\n\u2705 EIN / Tax ID filing\n\u2705 Operating agreement\n\u2705 Ongoing compliance support\n\nFast, affordable, and available in all 50 states.",
+                opts: [
+                    { t: "\uD83D\uDE80 Start with Upfirst \u2192",               n: "go", l: "https://upfirst.ai?plid=135267", g: true },
+                    { t: "\uD83D\uDCDE Ask Wayne a question first",               n: "contact" }
+                ]
+            },
+            consult: {
+                msg: "Let\u2019s map out your custom strategy. Wayne will review your business and put together a personalized growth plan.\n\n\uD83D\uDCCB Fill out our quick intake form and we\u2019ll be in touch within 1 business day:",
+                opts: [
+                    { t: "\uD83D\uDCCB Start Free Consultation \u2192",           n: "go", l: "https://form.jotform.com/250436502189153", g: true },
+                    { t: "\uD83D\uDCDE Call 813-321-5686 now",                    n: "go", l: "tel:813-321-5686" }
+                ]
+            }
+        };
+
+        function jwatOpen() {
+            document.getElementById("jwat-chat-window").classList.add("jwat-open");
+            document.getElementById("jwat-chat-bubble").style.display = "none";
+            isOpen = true;
+            if (!started) { started = true; setTimeout(function(){ step("start"); }, 420); }
+        }
+        window.jwatOpen = jwatOpen;
+
+        function jwatClose() {
+            document.getElementById("jwat-chat-window").classList.remove("jwat-open");
+            document.getElementById("jwat-chat-bubble").style.display = "flex";
+            isOpen = false;
+        }
+        window.jwatClose = jwatClose;
+
+        function step(key) {
+            var flow = FLOWS[key];
+            if (!flow) return;
+            typing(function() {
+                addMsg(flow.msg, "agent");
+                renderOpts(flow.opts);
+            });
+        }
+
+        function typing(cb) {
+            var msgs = document.getElementById("jwatMsgs");
+            var t = document.createElement("div");
+            t.className = "jwat-typing-row";
+            t.id = "jwat-typ";
+            t.innerHTML = '<div class="jwat-av">\uD83E\uDD16</div><div class="jwat-dots"><span></span><span></span><span></span></div>';
+            msgs.appendChild(t);
+            msgs.scrollTop = msgs.scrollHeight;
+            setTimeout(function() { t.remove(); cb(); }, 950);
+        }
+
+        function addMsg(txt, who) {
+            var msgs = document.getElementById("jwatMsgs");
+            var d = document.createElement("div");
+            d.className = "jwat-row " + who;
+            var av = who === "agent"
+                ? '<div class="jwat-av">\uD83E\uDD16</div>'
+                : '<div class="jwat-av" style="background:#ffd700;">\uD83D\uDC64</div>';
+            var html = txt.replace(/\n/g, "<br>");
+            d.innerHTML = (who==="agent"?av:"") + '<div class="jwat-bubble">'+html+'</div>' + (who==="user"?av:"");
+            msgs.appendChild(d);
+            msgs.scrollTop = msgs.scrollHeight;
+        }
+
+        function renderOpts(opts) {
+            var c = document.getElementById("jwatOpts");
+            c.innerHTML = "";
+            opts.forEach(function(o) {
+                var b = document.createElement("button");
+                b.className = "jwat-opt" + (o.g ? " g" : "");
+                b.textContent = o.t;
+                b.onclick = function() {
+                    addMsg(o.t, "user");
+                    c.innerHTML = "";
+                    if (o.l) {
+                        window.open(o.l, "_blank");
+                        setTimeout(function() {
+                            typing(function() {
+                                addMsg("Opening that for you now! \uD83C\uDF89 Is there anything else I can help you with?", "agent");
+                                renderOpts([
+                                    { t: "\u2190 Back to main menu", n: "start" },
+                                    { t: "\uD83D\uDCDE Call 813-321-5686", n: "go", l: "tel:813-321-5686" }
+                                ]);
+                            });
+                        }, 300);
+                    } else {
+                        setTimeout(function(){ step(o.n); }, 300);
+                    }
+                };
+                c.appendChild(b);
+            });
+        }
+
+        // Wire CTA buttons
+        document.addEventListener("DOMContentLoaded", function() {
+            document.querySelectorAll("a.cta-button, button.cta-button").forEach(function(btn) {
+                var txt = btn.textContent.trim().toLowerCase();
+                if (txt.includes("consultation") || txt.includes("get started")) {
+                    btn.addEventListener("click", function(e) {
+                        e.preventDefault();
+                        jwatOpen();
+                    });
+                }
+            });
+        });
+    })();
+    </script>
+
 </body>
 </html>
