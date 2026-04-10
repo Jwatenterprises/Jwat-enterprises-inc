@@ -942,400 +942,574 @@
     </script>
 
 
-    <!-- ===== JWAT VIRTUAL CONSULTANT WIDGET ===== -->
+    <!-- ===== CASSIDY — JWAT AI BUSINESS AGENT ===== -->
     <style>
-        #jwat-chat-bubble {
+        #cassidy-bubble {
             position: fixed;
             bottom: 28px;
             right: 28px;
-            width: 64px;
-            height: 64px;
+            width: 68px;
+            height: 68px;
             background: linear-gradient(135deg, #1a365d, #2d5a8c);
             border-radius: 50%;
             cursor: pointer;
-            box-shadow: 0 4px 20px rgba(26,54,93,0.45);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 28px;
+            font-size: 30px;
             z-index: 9998;
             transition: transform 0.2s, box-shadow 0.2s;
-            animation: jwat-pulse 2.5s infinite;
+            box-shadow: 0 4px 20px rgba(26,54,93,0.45);
+            animation: cassidy-pulse 3s infinite;
         }
-        #jwat-chat-bubble:hover { transform: scale(1.1); }
-        @keyframes jwat-pulse {
-            0%,100% { box-shadow: 0 4px 20px rgba(26,54,93,0.45); }
-            50%      { box-shadow: 0 4px 32px rgba(255,215,0,0.55), 0 4px 20px rgba(26,54,93,0.45); }
+        #cassidy-bubble:hover { transform: scale(1.1); }
+        @keyframes cassidy-pulse {
+            0%,100% { box-shadow: 0 4px 22px rgba(26,54,93,0.45); }
+            50%      { box-shadow: 0 4px 34px rgba(255,215,0,0.6), 0 4px 22px rgba(26,54,93,0.45); }
         }
-        .jwat-bubble-badge {
+        .cassidy-badge {
             position: absolute;
             top: -4px; right: -4px;
-            width: 20px; height: 20px;
+            width: 22px; height: 22px;
             background: #ffd700;
             border-radius: 50%;
             font-size: 11px;
             color: #1a365d;
-            font-weight: bold;
+            font-weight: 800;
             display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
         }
-        #jwat-chat-window {
+        .cassidy-tooltip {
+            position: absolute;
+            bottom: 78px; right: 0;
+            background: #1a365d;
+            color: white;
+            padding: 8px 14px;
+            border-radius: 10px;
+            font-size: 13px;
+            font-family: 'Segoe UI', sans-serif;
+            white-space: nowrap;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+            animation: cassidy-tooltip-in 0.3s ease;
+        }
+        .cassidy-tooltip::after {
+            content: '';
+            position: absolute;
+            bottom: -6px; right: 22px;
+            width: 12px; height: 12px;
+            background: #1a365d;
+            transform: rotate(45deg);
+            border-radius: 2px;
+        }
+        @keyframes cassidy-tooltip-in {
+            from { opacity: 0; transform: translateY(6px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Chat Window */
+        #cassidy-window {
             position: fixed;
-            bottom: 108px; right: 28px;
-            width: 375px;
-            max-height: 570px;
+            bottom: 112px; right: 28px;
+            width: 385px;
+            max-height: 590px;
             background: white;
-            border-radius: 18px;
-            box-shadow: 0 12px 50px rgba(0,0,0,0.18);
+            border-radius: 20px;
+            box-shadow: 0 14px 55px rgba(0,0,0,0.17);
             display: none;
             flex-direction: column;
             z-index: 9999;
             overflow: hidden;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        #jwat-chat-window.jwat-open {
+        #cassidy-window.c-open {
             display: flex;
-            animation: jwat-slideup 0.25s ease;
+            animation: cassidy-up 0.28s cubic-bezier(0.34,1.56,0.64,1);
         }
-        @keyframes jwat-slideup {
-            from { opacity: 0; transform: translateY(18px); }
-            to   { opacity: 1; transform: translateY(0); }
+        @keyframes cassidy-up {
+            from { opacity: 0; transform: translateY(24px) scale(0.96); }
+            to   { opacity: 1; transform: translateY(0) scale(1); }
         }
-        .jwat-header {
-            background: linear-gradient(135deg, #1a365d, #2d5a8c);
-            color: white;
-            padding: 15px 18px;
+
+        /* Header */
+        .c-header {
+            background: linear-gradient(135deg, #1a365d 0%, #2d5a8c 100%);
+            padding: 16px 18px;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 13px;
         }
-        .jwat-header-avatar {
-            width: 44px; height: 44px;
-            background: #ffd700;
+        .c-avatar-wrap {
+            position: relative;
+        }
+        .c-avatar {
+            width: 48px; height: 48px;
+            background: linear-gradient(135deg, #ffd700, #ffed4e);
             border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
-            font-size: 22px; flex-shrink: 0;
+            font-size: 24px;
+            flex-shrink: 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
         }
-        .jwat-header-info strong { display: block; font-size: 15px; }
-        .jwat-header-info span   { font-size: 12px; opacity: 0.82; }
-        .jwat-online { width:8px; height:8px; background:#4ade80; border-radius:50%; display:inline-block; margin-right:4px; }
-        .jwat-x {
-            margin-left: auto;
-            background: none; border: none;
-            color: white; font-size: 20px;
-            cursor: pointer; opacity: 0.75;
+        .c-status-dot {
+            position: absolute;
+            bottom: 2px; right: 2px;
+            width: 11px; height: 11px;
+            background: #4ade80;
+            border-radius: 50%;
+            border: 2px solid #1a365d;
         }
-        .jwat-x:hover { opacity: 1; }
-        .jwat-messages {
+        .c-header-info { flex: 1; }
+        .c-header-name {
+            color: #ffd700;
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: 0.3px;
+            display: block;
+        }
+        .c-header-role {
+            color: rgba(255,255,255,0.75);
+            font-size: 12px;
+            display: block;
+            margin-top: 2px;
+        }
+        .c-header-status {
+            color: rgba(255,255,255,0.6);
+            font-size: 11px;
+            display: block;
+            margin-top: 1px;
+        }
+        .c-minimize {
+            background: rgba(255,255,255,0.12);
+            border: none;
+            color: white;
+            width: 30px; height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 16px;
+            display: flex; align-items: center; justify-content: center;
+            transition: background 0.2s;
+            flex-shrink: 0;
+        }
+        .c-minimize:hover { background: rgba(255,255,255,0.22); }
+
+        /* Intro strip */
+        .c-intro-strip {
+            background: linear-gradient(90deg, #ffd700 0%, #ffed4e 100%);
+            padding: 9px 18px;
+            font-size: 12px;
+            color: #1a365d;
+            font-weight: 600;
+            text-align: center;
+            letter-spacing: 0.3px;
+        }
+
+        /* Messages */
+        .c-messages {
             flex: 1;
             overflow-y: auto;
-            padding: 16px 14px;
+            padding: 16px 15px;
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 11px;
             background: #f5f7fa;
-            max-height: 330px;
+            max-height: 310px;
         }
-        .jwat-row { display: flex; gap: 8px; align-items: flex-end; }
-        .jwat-row.agent { flex-direction: row; }
-        .jwat-row.user  { flex-direction: row-reverse; }
-        .jwat-av {
-            width: 30px; height: 30px;
-            background: #1a365d;
+        .c-row { display: flex; gap: 9px; align-items: flex-end; }
+        .c-row.agent { flex-direction: row; }
+        .c-row.user  { flex-direction: row-reverse; }
+        .c-msg-avatar {
+            width: 32px; height: 32px;
+            background: linear-gradient(135deg, #1a365d, #2d5a8c);
             border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
-            font-size: 14px; flex-shrink: 0;
+            font-size: 16px; flex-shrink: 0;
         }
-        .jwat-bubble {
-            max-width: 82%;
-            padding: 11px 14px;
-            border-radius: 16px;
+        .c-msg-avatar.user-av {
+            background: linear-gradient(135deg, #ffd700, #ffed4e);
+        }
+        .c-bubble {
+            max-width: 80%;
+            padding: 12px 15px;
+            border-radius: 18px;
             font-size: 14px;
-            line-height: 1.55;
+            line-height: 1.6;
         }
-        .jwat-row.agent .jwat-bubble {
+        .c-row.agent .c-bubble {
             background: white;
             color: #1a365d;
-            border-bottom-left-radius: 4px;
-            box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+            border-bottom-left-radius: 5px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
         }
-        .jwat-row.user .jwat-bubble {
-            background: #1a365d;
+        .c-row.user .c-bubble {
+            background: linear-gradient(135deg, #1a365d, #2d5a8c);
             color: white;
-            border-bottom-right-radius: 4px;
+            border-bottom-right-radius: 5px;
         }
-        .jwat-opts {
+        .c-sender-name {
+            font-size: 11px;
+            color: #999;
+            margin-bottom: 4px;
+            padding-left: 2px;
+        }
+        .c-msg-group { display: flex; flex-direction: column; max-width: 80%; }
+        .c-row.user .c-msg-group { align-items: flex-end; }
+
+        /* Options */
+        .c-opts {
             display: flex;
             flex-direction: column;
             gap: 7px;
-            padding: 12px 14px 15px;
+            padding: 12px 15px 16px;
             background: white;
-            border-top: 1px solid #eee;
+            border-top: 1px solid #f0f0f0;
         }
-        .jwat-opt {
+        .c-opt {
             background: white;
             border: 2px solid #1a365d;
             color: #1a365d;
-            padding: 9px 13px;
-            border-radius: 8px;
+            padding: 10px 14px;
+            border-radius: 10px;
             cursor: pointer;
             font-size: 13px;
             font-weight: 600;
             text-align: left;
-            transition: background 0.18s, color 0.18s;
+            transition: all 0.18s;
             font-family: inherit;
+            line-height: 1.3;
         }
-        .jwat-opt:hover   { background: #1a365d; color: white; }
-        .jwat-opt.g { background: #ffd700; border-color: #ffd700; color: #1a365d; }
-        .jwat-opt.g:hover { background: #ffed4e; border-color: #ffed4e; }
-        .jwat-typing-row { display: flex; gap: 8px; align-items: flex-end; }
-        .jwat-dots {
+        .c-opt:hover { background: #1a365d; color: white; transform: translateX(3px); }
+        .c-opt.gold  { background: #ffd700; border-color: #ffd700; color: #1a365d; }
+        .c-opt.gold:hover { background: #ffed4e; border-color: #ffed4e; transform: translateX(3px); }
+
+        /* Typing */
+        .c-typing-row { display: flex; gap: 9px; align-items: flex-end; }
+        .c-typing-dots {
             background: white;
-            border-radius: 16px;
-            border-bottom-left-radius: 4px;
-            padding: 12px 16px;
-            box-shadow: 0 1px 4px rgba(0,0,0,0.08);
-            display: flex; gap: 4px; align-items: center;
+            border-radius: 18px;
+            border-bottom-left-radius: 5px;
+            padding: 13px 17px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+            display: flex; gap: 5px; align-items: center;
         }
-        .jwat-dots span {
+        .c-typing-dots span {
             width: 7px; height: 7px;
-            background: #bbb; border-radius: 50%;
-            animation: jwat-dot 1.2s infinite;
+            background: #c0c8d8;
+            border-radius: 50%;
+            animation: c-dot 1.3s infinite ease-in-out;
         }
-        .jwat-dots span:nth-child(2) { animation-delay: 0.2s; }
-        .jwat-dots span:nth-child(3) { animation-delay: 0.4s; }
-        @keyframes jwat-dot {
-            0%,60%,100% { transform: translateY(0); }
-            30%          { transform: translateY(-5px); }
+        .c-typing-dots span:nth-child(2) { animation-delay: 0.18s; }
+        .c-typing-dots span:nth-child(3) { animation-delay: 0.36s; }
+        @keyframes c-dot {
+            0%,60%,100% { transform: translateY(0); background: #c0c8d8; }
+            30%          { transform: translateY(-6px); background: #1a365d; }
         }
-        @media (max-width: 420px) {
-            #jwat-chat-window { width: calc(100vw - 20px); right: 10px; bottom: 95px; }
-            #jwat-chat-bubble { right: 14px; bottom: 14px; }
+
+        /* Footer */
+        .c-footer {
+            background: white;
+            padding: 8px 15px;
+            border-top: 1px solid #f0f0f0;
+            text-align: center;
+            font-size: 11px;
+            color: #bbb;
+        }
+        .c-footer span { color: #ffd700; font-weight: 700; }
+
+        @media (max-width: 430px) {
+            #cassidy-window { width: calc(100vw - 18px); right: 9px; bottom: 100px; }
+            #cassidy-bubble { right: 14px; bottom: 14px; }
         }
     </style>
 
-    <!-- Floating Chat Bubble -->
-    <div id="jwat-chat-bubble" onclick="jwatOpen()" title="Talk to our AI Consultant">
-        <span>🤖</span>
-        <div class="jwat-bubble-badge">1</div>
+    <!-- Floating Bubble -->
+    <div id="cassidy-bubble" onclick="cassidyOpen()" title="Chat with Cassidy — JWAT AI Agent">
+        <span>👩‍💼</span>
+        <div class="cassidy-badge">1</div>
+        <div class="cassidy-tooltip" id="cassidyTooltip">Hey! I'm Cassidy 👋 Let's grow your business</div>
     </div>
 
     <!-- Chat Window -->
-    <div id="jwat-chat-window">
-        <div class="jwat-header">
-            <div class="jwat-header-avatar">🤖</div>
-            <div class="jwat-header-info">
-                <strong>JWAT Virtual Consultant</strong>
-                <span><span class="jwat-online"></span>Online &bull; 24/7 Available</span>
+    <div id="cassidy-window">
+        <div class="c-header">
+            <div class="c-avatar-wrap">
+                <div class="c-avatar">👩‍💼</div>
+                <div class="c-status-dot"></div>
             </div>
-            <button class="jwat-x" onclick="jwatClose()">&#10005;</button>
+            <div class="c-header-info">
+                <span class="c-header-name">Cassidy</span>
+                <span class="c-header-role">JWAT AI Business Agent</span>
+                <span class="c-header-status">● Online · Typically replies instantly</span>
+            </div>
+            <button class="c-minimize" onclick="cassidyClose()">&#10005;</button>
         </div>
-        <div class="jwat-messages" id="jwatMsgs"></div>
-        <div class="jwat-opts" id="jwatOpts"></div>
+        <div class="c-intro-strip">✦ AI-Powered · Available 24/7 · No waiting, no hold music ✦</div>
+        <div class="c-messages" id="cassidyMsgs"></div>
+        <div class="c-opts" id="cassidyOpts"></div>
+        <div class="c-footer">Powered by <span>JWAT Enterprises</span> · biz@jwatenterprisesinc.com</div>
     </div>
 
     <script>
     (function() {
+        // Hide tooltip after 5s
+        setTimeout(function() {
+            var t = document.getElementById('cassidyTooltip');
+            if (t) t.style.display = 'none';
+        }, 5000);
+
         var started = false;
         var isOpen  = false;
 
+        // ── CASSIDY'S PERSONALITY ──────────────────────────────────────
+        // Cassidy is confident, warm, direct, and business-savvy.
+        // She speaks like a trusted advisor — not a chatbot.
+        // She knows JWAT's services cold and routes fast.
+        // She celebrates wins, asks sharp questions, and always moves forward.
+        // ───────────────────────────────────────────────────────────────
+
         var FLOWS = {
             start: {
-                msg: "Hi! \uD83D\uDC4B I\u2019m your JWAT Virtual Consultant \u2014 available 24/7 to match you with the right solution.\n\nWhat brings you here today?",
+                msg: "Hey! I\u2019m Cassidy \u2014 JWAT\u2019s AI Business Agent. \uD83D\uDC4B\n\nI\u2019m here to cut through the noise and connect you with exactly what your business needs to grow. I\u2019ve helped entrepreneurs just like you with sales, marketing, funding, and more.\n\nSo tell me \u2014 what\u2019s the one thing holding your business back right now?",
                 opts: [
-                    { t: "\uD83D\uDCC8 Sales Strategy & Funnel Optimization",   n: "sales" },
-                    { t: "\uD83C\uDFAF Marketing & Lead Generation",             n: "marketing" },
-                    { t: "\uD83D\uDCB0 Business Financing or Credit",            n: "finance" },
-                    { t: "\uD83D\uDE80 Start or Register a Business",            n: "formation" },
-                    { t: "\uD83C\uDFDB\uFE0F Tax Services",                      n: "tax" },
-                    { t: "\uD83D\uDD16 Speak with AI Agent Cassidy",            n: "contact" }
+                    { t: "\uD83D\uDCC8 My sales & funnels aren\u2019t converting",         n: "sales" },
+                    { t: "\uD83C\uDFAF My marketing isn\u2019t generating enough leads",   n: "marketing" },
+                    { t: "\uD83D\uDCB0 I need funding or stronger business credit",        n: "finance" },
+                    { t: "\uD83D\uDE80 I need to start or register my business",           n: "formation" },
+                    { t: "\uD83C\uDFDB\uFE0F I need help with taxes",                      n: "tax" },
+                    { t: "\uD83E\uDD16 Just browsing \u2014 tell me more about JWAT",      n: "about" }
                 ]
             },
+
             sales: {
-                msg: "A high-converting sales funnel is the engine of your business growth.\n\nWhat do you need most right now?",
+                msg: "Ooh, this is my favorite. \uD83D\uDE0A Sales funnels are where most businesses either win or lose \u2014 and the fix is almost always simpler than people think.\n\nLet me ask: where are leads falling off for you?",
                 opts: [
-                    { t: "CRM + pipeline to manage & track leads",              n: "ghl" },
-                    { t: "Automated sales funnels that convert",                n: "ghl" },
-                    { t: "A full strategy session with Wayne first",            n: "consult" }
+                    { t: "I\u2019m not tracking leads properly \u2014 I need a CRM",       n: "ghl" },
+                    { t: "I need automated follow-ups that actually convert",               n: "ghl" },
+                    { t: "I want to build a full funnel from scratch",                     n: "ghl" },
+                    { t: "I\u2019m not sure \u2014 I need a strategy session",             n: "consult" }
                 ]
             },
+
             marketing: {
-                msg: "Smart marketing fills your funnel and keeps customers coming back.\n\nWhat\u2019s your goal?",
+                msg: "Love this. You can have the best service in the world \u2014 but if nobody hears about it, you\u2019re invisible.\n\nMarketing done right fills your pipeline on autopilot. What does your current setup look like?",
                 opts: [
-                    { t: "Email marketing & automation campaigns",              n: "ac" },
-                    { t: "Lead nurturing & customer journey automation",        n: "ac" },
-                    { t: "Full marketing strategy session with Wayne",          n: "consult" }
+                    { t: "I have no email marketing set up at all",                        n: "ac" },
+                    { t: "My emails go out but nobody engages",                            n: "ac" },
+                    { t: "I want to automate my entire lead nurture sequence",             n: "ac" },
+                    { t: "I need a full marketing strategy built out",                     n: "consult" }
                 ]
             },
+
             finance: {
-                msg: "Access to capital and solid business credit unlocks your growth potential.\n\nWhat do you need?",
+                msg: "Access to capital changes everything. Most small business owners don\u2019t realize how much they qualify for \u2014 or how fast they can build their credit profile.\n\nWhat\u2019s your situation right now?",
                 opts: [
-                    { t: "\uD83C\uDFE6 Build or improve my business credit",   n: "nav" },
-                    { t: "\uD83D\uDCB5 Get a business loan or working capital", n: "rok" },
-                    { t: "Both \u2014 I need credit AND financing",             n: "both_fin" }
+                    { t: "\uD83C\uDFE6 My business credit is weak \u2014 I need to build it",  n: "nav" },
+                    { t: "\uD83D\uDCB5 I need a business loan or working capital now",          n: "rok" },
+                    { t: "\uD83D\uDD04 Both \u2014 I need credit AND capital",                  n: "both_fin" },
+                    { t: "\uD83E\uDD14 I\u2019m not sure what I qualify for",                   n: "finance_unsure" }
                 ]
             },
+
+            finance_unsure: {
+                msg: "No worries \u2014 that\u2019s actually the most common answer, and it\u2019s completely fixable.\n\nHere\u2019s what I recommend: start with Nav to see exactly where your business credit stands today. It\u2019s free, takes 2 minutes, and gives you a clear picture of what you qualify for. Then we can talk funding options.\n\nShall we start there?",
+                opts: [
+                    { t: "\uD83C\uDFE6 Yes \u2014 check my business credit with Nav \u2192",   n: "go", l: "https://nav.nkwcmr.net/c/6782322/1849064/2410", g: true },
+                    { t: "Tell me more about business loans first",                            n: "rok" }
+                ]
+            },
+
             formation: {
-                msg: "Setting up your business correctly from day one protects your assets and opens doors to funding.\n\nUpfirst makes formation fast and simple in all 50 states.",
+                msg: "Smart move starting here. Setting up your legal structure correctly from day one protects your personal assets, unlocks business credit, and makes you look credible to clients and lenders.\n\nUpfirst is who we trust for this. Fast, affordable, and available in all 50 states.",
                 opts: [
-                    { t: "\uD83D\uDE80 Get Started with Upfirst \u2192",        n: "go", l: "https://upfirst.ai?plid=135267", g: true },
-                    { t: "Tell me more first",                                   n: "formation_info" }
+                    { t: "\uD83D\uDE80 Start my business with Upfirst \u2192",             n: "go", l: "https://upfirst.ai?plid=135267", g: true },
+                    { t: "What exactly does Upfirst handle?",                              n: "formation_info" },
+                    { t: "I\u2019m already registered \u2014 I need other help",           n: "start" }
                 ]
             },
-            tax: {
-                msg: "Our tax experts help small businesses minimize liability, maximize deductions, and stay fully compliant year-round.\n\nComplete our quick intake form to get started:",
-                opts: [
-                    { t: "\uD83D\uDCCB Complete Tax Intake Form \u2192",         n: "go", l: "https://form.jotform.com/250436502189153", g: true },
-                    { t: "\uD83D\uDCDE Call us instead",                         n: "contact" }
-                ]
-            },
-            contact: {
-                msg: "Hi! I’m Cassidy, JWAT’s AI Agent — I’m here to help you right now.\n\n\uD83D\uDCDE 813-321-5686 (24/7 AI Receptionist)\n\u2709\uFE0F biz@jwatenterprisesinc.com\n\nHow would you like to connect?",
-                opts: [
-                    { t: "\uD83D\uDCDE Call 813-321-5686",                       n: "go", l: "tel:813-321-5686", g: true },
-                    { t: "\u2709\uFE0F Send an Email",                           n: "go", l: "mailto:biz@jwatenterprisesinc.com" },
-                    { t: "\u2190 Back to main menu",                             n: "start" }
-                ]
-            },
-            ghl: {
-                msg: "GoHighLevel is the all-in-one platform our clients use to run their entire sales operation.\n\n\u2705 CRM & pipeline management\n\u2705 Drag-and-drop funnel builder\n\u2705 SMS, email & voicemail automation\n\u2705 14-day free trial",
-                opts: [
-                    { t: "\u26A1 Try GoHighLevel Free \u2192",                   n: "go", l: "https://www.gohighlevel.com", g: true },
-                    { t: "\uD83D\uDCCB Book a strategy session first",            n: "consult" }
-                ]
-            },
-            ac: {
-                msg: "ActiveCampaign is our top pick for marketing automation \u2014 used by 150,000+ businesses.\n\n\u2705 Visual email automation builder\n\u2705 Smart audience segmentation\n\u2705 Built-in CRM + lead scoring\n\u2705 Free 14-day trial",
-                opts: [
-                    { t: "\uD83D\uDCE3 Try ActiveCampaign Free \u2192",          n: "go", l: "https://www.activecampaign.com", g: true },
-                    { t: "\uD83D\uDCCB Book a strategy session first",            n: "consult" }
-                ]
-            },
-            nav: {
-                msg: "Nav gives you a complete business credit profile so you can access better financing, lower rates, and more funding options.\n\n\u2705 Free to start\n\u2705 Business credit monitoring\n\u2705 Financing marketplace with 100+ lenders",
-                opts: [
-                    { t: "\uD83C\uDFE6 Get Started with Nav \u2192",             n: "go", l: "https://nav.nkwcmr.net/c/6782322/1849064/2410", g: true },
-                    { t: "I also need business financing",                       n: "rok" }
-                ]
-            },
-            rok: {
-                msg: "ROK Financial connects you with the right lenders for working capital, equipment financing, and business loans.\n\n\u2705 One application \u2014 multiple lenders\n\u2705 Fast approvals\n\u2705 Flexible terms for SMBs",
-                opts: [
-                    { t: "\uD83D\uDCB5 Explore ROK Financial \u2192",            n: "go", l: "https://go.mypartner.io/business-financing/?ref=001Qk00000dxUurIAE", g: true },
-                    { t: "I also need to build business credit",                 n: "nav" }
-                ]
-            },
-            both_fin: {
-                msg: "Great strategy \u2014 many of our clients do both.\n\nStart with Nav to build your credit foundation, then leverage ROK Financial for immediate capital access. Both work together.",
-                opts: [
-                    { t: "\uD83C\uDFE6 Start with Nav (credit) \u2192",          n: "go", l: "https://nav.nkwcmr.net/c/6782322/1849064/2410", g: true },
-                    { t: "\uD83D\uDCB5 Go to ROK Financial (loans) \u2192",      n: "go", l: "https://go.mypartner.io/business-financing/?ref=001Qk00000dxUurIAE" }
-                ]
-            },
+
             formation_info: {
-                msg: "Upfirst handles everything:\n\n\u2705 LLC or Corporation formation\n\u2705 Registered agent services\n\u2705 EIN / Tax ID filing\n\u2705 Operating agreement\n\u2705 Ongoing compliance support\n\nFast, affordable, and available in all 50 states.",
+                msg: "Great question. Here\u2019s exactly what Upfirst covers:\n\n\u2705 LLC or Corporation formation (all 50 states)\n\u2705 Registered agent service\n\u2705 EIN / Federal Tax ID filing\n\u2705 Operating agreement drafting\n\u2705 Ongoing compliance alerts\n\nMost clients are fully set up within 1\u20132 business days. No lawyer needed, no confusion.",
                 opts: [
-                    { t: "\uD83D\uDE80 Start with Upfirst \u2192",               n: "go", l: "https://upfirst.ai?plid=135267", g: true },
-                    { t: "\uD83D\uDCDE Ask Wayne a question first",               n: "contact" }
+                    { t: "\uD83D\uDE80 Let\u2019s do it \u2014 Start with Upfirst \u2192",  n: "go", l: "https://upfirst.ai?plid=135267", g: true },
+                    { t: "\uD83D\uDCDE I have more questions \u2014 call me",              n: "contact" }
                 ]
             },
-            consult: {
-                msg: "Let\u2019s map out your custom strategy. Wayne will review your business and put together a personalized growth plan.\n\n\uD83D\uDCCB Fill out our quick intake form and we\u2019ll be in touch within 1 business day:",
+
+            tax: {
+                msg: "Tax strategy is one of the most overlooked money-savers for small businesses. Most owners overpay simply because they don\u2019t have the right guidance.\n\nOur team handles everything \u2014 prep, planning, quarterly estimates, and compliance. Let\u2019s get your intake started so we can see exactly where you stand.",
                 opts: [
-                    { t: "\uD83D\uDCCB Start Free Consultation \u2192",           n: "go", l: "https://form.jotform.com/250436502189153", g: true },
-                    { t: "\uD83D\uDCDE Call 813-321-5686 now",                    n: "go", l: "tel:813-321-5686" }
+                    { t: "\uD83D\uDCCB Complete my Tax Intake Form \u2192",                n: "go", l: "https://form.jotform.com/250436502189153", g: true },
+                    { t: "What tax services do you cover exactly?",                        n: "tax_info" },
+                    { t: "\uD83D\uDCDE I\u2019d rather talk to someone",                  n: "contact" }
+                ]
+            },
+
+            tax_info: {
+                msg: "Here\u2019s what JWAT\u2019s tax services cover:\n\n\u2705 Business tax preparation (LLC, S-Corp, C-Corp)\n\u2705 Quarterly estimated tax planning\n\u2705 Deduction optimization strategy\n\u2705 IRS compliance & back-tax support\n\u2705 Year-round advisory access\n\nWe specialize in small businesses \u2014 not giant firms where you\u2019re just a file number.",
+                opts: [
+                    { t: "\uD83D\uDCCB Complete Tax Intake Form \u2192",                   n: "go", l: "https://form.jotform.com/250436502189153", g: true },
+                    { t: "\uD83D\uDCDE Call 813-321-5686",                                 n: "go", l: "tel:813-321-5686" }
+                ]
+            },
+
+            about: {
+                msg: "I love this question. \uD83D\uDE04\n\nJWAT Enterprises is Wayne\u2019s AI-powered business consulting firm built specifically for startups and small businesses. Most consultants pick one lane \u2014 Wayne built a 4-in-1 solution:\n\n\uD83D\uDCC8 Sales & Funnel Strategy\n\uD83C\uDFAF Marketing Optimization\n\uD83D\uDCB0 Financial Management & Business Credit\n\uD83C\uDFDB\uFE0F Tax Services\n\nAnd I\u2019m Cassidy \u2014 available 24/7 so no one ever waits for answers.\n\nWhat part of your business do you want to tackle first?",
+                opts: [
+                    { t: "\uD83D\uDCC8 Sales & Funnels",         n: "sales" },
+                    { t: "\uD83C\uDFAF Marketing",               n: "marketing" },
+                    { t: "\uD83D\uDCB0 Financing & Credit",       n: "finance" },
+                    { t: "\uD83C\uDFDB\uFE0F Tax Services",       n: "tax" },
+                    { t: "\uD83D\uDCCB Book a consultation",      n: "consult" }
+                ]
+            },
+
+            contact: {
+                msg: "You\u2019re already talking to me, Cassidy! \uD83D\uDE04 But I totally get it \u2014 sometimes you want a real human conversation.\n\nWayne and the JWAT team are available via phone and email. Here\u2019s how to reach them directly:",
+                opts: [
+                    { t: "\uD83D\uDCDE Call 813-321-5686 (24/7 AI Receptionist)",         n: "go", l: "tel:813-321-5686", g: true },
+                    { t: "\u2709\uFE0F Email biz@jwatenterprisesinc.com",                 n: "go", l: "mailto:biz@jwatenterprisesinc.com" },
+                    { t: "\u2190 Back to main menu",                                      n: "start" }
+                ]
+            },
+
+            ghl: {
+                msg: "Yes. GoHighLevel is the exact tool I\u2019d recommend here \u2014 and I\u2019ve seen it transform how small businesses operate.\n\nHere\u2019s what you get:\n\uD83D\uDCCA Full CRM & visual pipeline\n\uD83E\uDD16 Automated SMS, email & voicemail follow-ups\n\uD83C\uDFF7\uFE0F Drag-and-drop funnel builder\n\uD83D\uDCC5 Appointment scheduling built in\n\u2705 14-day free trial \u2014 no credit card\n\nTry it and I promise you\u2019ll wonder how you survived without it.",
+                opts: [
+                    { t: "\u26A1 Start GoHighLevel Free Trial \u2192",                    n: "go", l: "https://www.gohighlevel.com", g: true },
+                    { t: "\uD83D\uDCCB I want a strategy session too",                    n: "consult" }
+                ]
+            },
+
+            ac: {
+                msg: "ActiveCampaign is my go-to for marketing automation \u2014 150,000+ businesses run on it and I can see why.\n\nWhat makes it different:\n\uD83D\uDCE7 Visual drag-and-drop automation builder\n\uD83C\uDFAF Smart segmentation & personalization\n\uD83D\uDCCA Lead scoring so you know who\u2019s ready to buy\n\uD83D\uDD17 Deep integrations with your existing tools\n\u2705 Free trial available\n\nOnce you set up your first automated sequence, leads start nurturing themselves.",
+                opts: [
+                    { t: "\uD83D\uDCE3 Try ActiveCampaign Free \u2192",                   n: "go", l: "https://www.activecampaign.com", g: true },
+                    { t: "\uD83D\uDCCB I want help setting up my strategy",               n: "consult" }
+                ]
+            },
+
+            nav: {
+                msg: "Nav is hands-down the best place to start building your business credit profile. I recommend it to every client.\n\n\uD83C\uDFE6 Free business credit monitoring\n\uD83D\uDCCA See all 3 business credit scores in one place\n\uD83D\uDCB3 Get matched with credit cards & financing you actually qualify for\n\uD83D\uDCC8 Step-by-step credit building roadmap\n\nFree to start. Takes 2 minutes.",
+                opts: [
+                    { t: "\uD83C\uDFE6 Build My Business Credit with Nav \u2192",         n: "go", l: "https://nav.nkwcmr.net/c/6782322/1849064/2410", g: true },
+                    { t: "I also need a business loan",                                   n: "rok" }
+                ]
+            },
+
+            rok: {
+                msg: "ROK Financial is who we trust for business funding. One application, multiple lenders \u2014 so you get options, not just one take-it-or-leave-it offer.\n\n\uD83D\uDCB5 Working capital & lines of credit\n\uD83D\uDEE0\uFE0F Equipment financing\n\uD83C\uDFE2 SBA & term loans\n\u23F1 Fast decisions \u2014 often same day\n\u2705 All credit profiles considered\n\nThey specialize in SMBs so they get it.",
+                opts: [
+                    { t: "\uD83D\uDCB5 Apply with ROK Financial \u2192",                  n: "go", l: "https://go.mypartner.io/business-financing/?ref=001Qk00000dxUurIAE", g: true },
+                    { t: "I also need to build business credit",                          n: "nav" }
+                ]
+            },
+
+            both_fin: {
+                msg: "Love the thinking here \u2014 this is exactly what our most successful clients do.\n\nThe strategy: use Nav to build your credit profile (which qualifies you for better rates), then use ROK Financial to access the actual capital. They work together perfectly.\n\nWhich do you want to tackle first?",
+                opts: [
+                    { t: "\uD83C\uDFE6 Start with Nav (credit foundation) \u2192",        n: "go", l: "https://nav.nkwcmr.net/c/6782322/1849064/2410", g: true },
+                    { t: "\uD83D\uDCB5 Go straight to ROK Financial (loans) \u2192",      n: "go", l: "https://go.mypartner.io/business-financing/?ref=001Qk00000dxUurIAE" }
+                ]
+            },
+
+            consult: {
+                msg: "Let\u2019s do this. \uD83D\uDCAA Wayne will review your business personally and put together a custom growth plan \u2014 no cookie-cutter advice, no fluff.\n\nHere\u2019s how it works:\n1\uFE0F\u20E3 Fill out the quick intake form (5 min)\n2\uFE0F\u20E3 Wayne reviews your business\n3\uFE0F\u20E3 You get a personalized strategy call\n\nWe typically follow up within 1 business day.",
+                opts: [
+                    { t: "\uD83D\uDCCB Start Free Consultation \u2192",                   n: "go", l: "https://form.jotform.com/250436502189153", g: true },
+                    { t: "\uD83D\uDCDE I\u2019d rather call: 813-321-5686",               n: "go", l: "tel:813-321-5686" }
                 ]
             }
         };
 
-        function jwatOpen() {
-            document.getElementById("jwat-chat-window").classList.add("jwat-open");
-            document.getElementById("jwat-chat-bubble").style.display = "none";
+        function cassidyOpen() {
+            document.getElementById('cassidy-window').classList.add('c-open');
+            document.getElementById('cassidy-bubble').style.display = 'none';
+            var t = document.getElementById('cassidyTooltip');
+            if (t) t.style.display = 'none';
             isOpen = true;
-            if (!started) { started = true; setTimeout(function(){ step("start"); }, 420); }
+            if (!started) { started = true; setTimeout(function(){ step('start'); }, 450); }
         }
-        window.jwatOpen = jwatOpen;
+        window.cassidyOpen = cassidyOpen;
 
-        function jwatClose() {
-            document.getElementById("jwat-chat-window").classList.remove("jwat-open");
-            document.getElementById("jwat-chat-bubble").style.display = "flex";
+        function cassidyClose() {
+            document.getElementById('cassidy-window').classList.remove('c-open');
+            document.getElementById('cassidy-bubble').style.display = 'flex';
             isOpen = false;
         }
-        window.jwatClose = jwatClose;
+        window.cassidyClose = cassidyClose;
 
         function step(key) {
             var flow = FLOWS[key];
             if (!flow) return;
-            typing(function() {
-                addMsg(flow.msg, "agent");
-                renderOpts(flow.opts);
-            });
+            typing(function() { addMsg(flow.msg, 'agent'); renderOpts(flow.opts); });
         }
 
         function typing(cb) {
-            var msgs = document.getElementById("jwatMsgs");
-            var t = document.createElement("div");
-            t.className = "jwat-typing-row";
-            t.id = "jwat-typ";
-            t.innerHTML = '<div class="jwat-av">\uD83E\uDD16</div><div class="jwat-dots"><span></span><span></span><span></span></div>';
+            var msgs = document.getElementById('cassidyMsgs');
+            var t = document.createElement('div');
+            t.className = 'c-typing-row'; t.id = 'c-typ';
+            t.innerHTML = '<div class="c-msg-avatar">\uD83D\uDC69\u200D\uD83D\uDCBC</div><div class="c-typing-dots"><span></span><span></span><span></span></div>';
             msgs.appendChild(t);
             msgs.scrollTop = msgs.scrollHeight;
-            setTimeout(function() { t.remove(); cb(); }, 950);
+            setTimeout(function() { t.remove(); cb(); }, 1000);
         }
 
         function addMsg(txt, who) {
-            var msgs = document.getElementById("jwatMsgs");
-            var d = document.createElement("div");
-            d.className = "jwat-row " + who;
-            var av = who === "agent"
-                ? '<div class="jwat-av">\uD83E\uDD16</div>'
-                : '<div class="jwat-av" style="background:#ffd700;">\uD83D\uDC64</div>';
-            var html = txt.replace(/\n/g, "<br>");
-            d.innerHTML = (who==="agent"?av:"") + '<div class="jwat-bubble">'+html+'</div>' + (who==="user"?av:"");
-            msgs.appendChild(d);
+            var msgs = document.getElementById('cassidyMsgs');
+            var wrap = document.createElement('div');
+            wrap.className = 'c-row ' + who;
+            var av = who === 'agent'
+                ? '<div class="c-msg-avatar">\uD83D\uDC69\u200D\uD83D\uDCBC</div>'
+                : '<div class="c-msg-avatar user-av">\uD83D\uDC64</div>';
+            var name = who === 'agent' ? '<div class="c-sender-name">Cassidy</div>' : '';
+            var html = txt.replace(/\n/g, '<br>');
+            var grp = '<div class="c-msg-group">' + name + '<div class="c-bubble">' + html + '</div></div>';
+            wrap.innerHTML = (who==='agent' ? av : '') + grp + (who==='user' ? av : '');
+            msgs.appendChild(wrap);
             msgs.scrollTop = msgs.scrollHeight;
         }
 
         function renderOpts(opts) {
-            var c = document.getElementById("jwatOpts");
-            c.innerHTML = "";
+            var c = document.getElementById('cassidyOpts');
+            c.innerHTML = '';
             opts.forEach(function(o) {
-                var b = document.createElement("button");
-                b.className = "jwat-opt" + (o.g ? " g" : "");
+                var b = document.createElement('button');
+                b.className = 'c-opt' + (o.g ? ' gold' : '');
                 b.textContent = o.t;
                 b.onclick = function() {
-                    addMsg(o.t, "user");
-                    c.innerHTML = "";
+                    addMsg(o.t, 'user');
+                    c.innerHTML = '';
                     if (o.l) {
-                        window.open(o.l, "_blank");
+                        window.open(o.l, '_blank');
                         setTimeout(function() {
                             typing(function() {
-                                addMsg("Opening that for you now! \uD83C\uDF89 Is there anything else I can help you with?", "agent");
+                                addMsg("Done! \uD83C\uDF89 I\u2019ve opened that in a new tab for you.\n\nAnything else I can help you with? I\u2019m not going anywhere. \uD83D\uDE0A", 'agent');
                                 renderOpts([
-                                    { t: "\u2190 Back to main menu", n: "start" },
-                                    { t: "\uD83D\uDCDE Call 813-321-5686", n: "go", l: "tel:813-321-5686" }
+                                    { t: '\u2190 Back to main menu',             n: 'start' },
+                                    { t: '\uD83D\uDCCB Book a free consultation', n: 'consult' }
                                 ]);
                             });
                         }, 300);
                     } else {
-                        setTimeout(function(){ step(o.n); }, 300);
+                        setTimeout(function() { step(o.n); }, 320);
                     }
                 };
                 c.appendChild(b);
             });
         }
 
-        // Wire CTA buttons
-        document.addEventListener("DOMContentLoaded", function() {
-            document.querySelectorAll("a.cta-button, button.cta-button").forEach(function(btn) {
+        // Wire all CTA buttons
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('a.cta-button, button.cta-button').forEach(function(btn) {
                 var txt = btn.textContent.trim().toLowerCase();
-                if (txt.includes("consultation") || txt.includes("get started")) {
-                    btn.addEventListener("click", function(e) {
+                if (txt.includes('consultation') || txt.includes('get started')) {
+                    btn.addEventListener('click', function(e) {
                         e.preventDefault();
-                        jwatOpen();
+                        cassidyOpen();
                     });
                 }
             });
         });
+
     })();
     </script>
 
