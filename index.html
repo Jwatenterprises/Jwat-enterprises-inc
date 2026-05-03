@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -673,7 +673,14 @@
                 align-items: center;
             }
         }
-    </style>
+        /* ===== OPT-IN SECTION ===== */
+        .optin-section { background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%); color: white; text-align: center; padding: 70px 20px; }
+        .optin-badge { display: inline-block; background: var(--gold); color: var(--navy); font-size: 11px; font-weight: 800; letter-spacing: 2px; padding: 5px 14px; border-radius: 3px; margin-bottom: 20px; text-transform: uppercase; }
+        .optin-iframe-wrap { max-width: 560px; margin: 0 auto; border-radius: 10px; overflow: hidden; background: white; box-shadow: 0 4px 24px rgba(0,0,0,0.2); }
+        .optin-iframe-wrap iframe { display: block; width: 100%; border: none; }
+        .optin-checklist-link { margin-top: 20px; font-size: 14px; color: rgba(255,255,255,0.65); }
+        .optin-checklist-link a { color: var(--gold); font-weight: 600; text-decoration: none; }
+        .optin-checklist-link a:hover { text-decoration: underline; }    </style>
 </head>
 <body>
 
@@ -877,6 +884,17 @@
         </div>
     </section>
 
+
+    <!-- ===== EMAIL OPT-IN ===== -->
+    <section class="optin-section" id="free-checklist">
+        <div class="optin-badge">Free Resource</div>
+        <h2 style="font-size:32px;margin-bottom:14px;max-width:640px;margin-left:auto;margin-right:auto;">Is Your Sales Process Costing You Clients?</h2>
+        <p style="font-size:17px;color:rgba(255,255,255,0.82);max-width:520px;margin:0 auto 32px;">Get the <strong style="color:var(--gold);">5-Minute Sales Audit Checklist</strong> &mdash; the exact 10 questions Wayne uses to find where small businesses are losing deals. Free. Instant.</p>
+        <div class="optin-iframe-wrap">
+            <iframe src="https://55c343d5.sibforms.com/serve/MUIFAOrZ7IJa_Mxs8IeboYQku7SfliQFLMfZB91ZPZ3omUA1s58PfcsVTRJaxgMs_FrDhUmyktHkI7zeOYQsbSo6VMPoD6k20OohMT7g8F8ErZUbzMXoX-bGb_NKY2PYThFYOSUqoOj4PFYu-VbXhG1VKvDY5XjNbWaVFMN78ajnQlwaR_B1Akdgw3aNVLXJCAL-1qgf6CviNs5EmA==" width="540" height="380" frameborder="0" scrolling="auto" allowfullscreen></iframe>
+        </div>
+        <p class="optin-checklist-link">Already subscribed? <a href="/resources/sales-audit-checklist.html">View the checklist directly &rarr;</a></p>
+    </section>
     <!-- ===== CONTACT ===== -->
     <section class="contact-section section" id="contact">
         <div class="section-inner">
@@ -1225,7 +1243,14 @@
             #cassidy-window { width: calc(100vw - 18px); right: 9px; bottom: 100px; }
             #cassidy-bubble { right: 14px; bottom: 14px; }
         }
-    </style>
+        /* ===== OPT-IN SECTION ===== */
+        .optin-section { background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%); color: white; text-align: center; padding: 70px 20px; }
+        .optin-badge { display: inline-block; background: var(--gold); color: var(--navy); font-size: 11px; font-weight: 800; letter-spacing: 2px; padding: 5px 14px; border-radius: 3px; margin-bottom: 20px; text-transform: uppercase; }
+        .optin-iframe-wrap { max-width: 560px; margin: 0 auto; border-radius: 10px; overflow: hidden; background: white; box-shadow: 0 4px 24px rgba(0,0,0,0.2); }
+        .optin-iframe-wrap iframe { display: block; width: 100%; border: none; }
+        .optin-checklist-link { margin-top: 20px; font-size: 14px; color: rgba(255,255,255,0.65); }
+        .optin-checklist-link a { color: var(--gold); font-weight: 600; text-decoration: none; }
+        .optin-checklist-link a:hover { text-decoration: underline; }    </style>
 
     <!-- Floating Bubble -->
     <div id="cassidy-bubble" onclick="cassidyOpen()" title="Chat with Cassidy — JWAT AI Agent">
@@ -1513,3 +1538,5 @@
 
 </body>
 </html>
+
+
