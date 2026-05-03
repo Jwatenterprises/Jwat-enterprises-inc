@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The 5-Minute Sales Audit Checklist — JWAT Enterprises Inc</title>
+<meta name="description" content="10 questions every small business owner must answer to find out why they're not closing more deals. Free from JWAT Enterprises Inc.">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+:root { --navy:#1a365d; --navy-light:#2d5a8c; --gold:#ffd700; --dark:#0d1b2a; }
+body { font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif; background:#f4f6f9; color:#333; }
+header { background:linear-gradient(135deg,var(--navy),var(--navy-light)); padding:16px 0; text-align:center; }
+.logo { font-size:20px; font-weight:800; color:var(--gold); letter-spacing:1px; }
+.logo span { display:block; font-size:10px; color:rgba(255,255,255,0.7); letter-spacing:2px; text-transform:uppercase; margin-top:3px; }
+.hero { background:linear-gradient(135deg,var(--navy),var(--navy-light)); color:white; padding:60px 20px; text-align:center; }
+.hero-badge { display:inline-block; background:var(--gold); color:var(--navy); font-size:11px; font-weight:800; letter-spacing:2px; padding:5px 14px; border-radius:3px; margin-bottom:20px; text-transform:uppercase; }
+.hero h1 { font-size:36px; font-weight:800; max-width:620px; margin:0 auto 16px; line-height:1.3; }
+.hero p { font-size:17px; color:rgba(255,255,255,0.82); max-width:500px; margin:0 auto; }
+.container { max-width:720px; margin:0 auto; padding:0 20px; }
+.intro-box { background:white; border-radius:10px; padding:32px; margin:40px auto; border-left:5px solid var(--gold); box-shadow:0 2px 12px rgba(0,0,0,0.06); }
+.intro-box p { font-size:16px; line-height:1.8; color:#444; }
+.intro-box strong { color:var(--navy); }
+.checklist-card { background:white; border-radius:10px; padding:36px; margin:24px auto; box-shadow:0 2px 12px rgba(0,0,0,0.06); }
+.checklist-card h2 { font-size:22px; color:var(--navy); margin-bottom:28px; padding-bottom:14px; border-bottom:2px solid var(--gold); }
+.check-item { display:flex; align-items:flex-start; gap:16px; padding:18px 0; border-bottom:1px solid #f0f0f0; }
+.check-item:last-child { border-bottom:none; }
+.check-box { width:26px; height:26px; min-width:26px; border:2px solid var(--navy); border-radius:5px; margin-top:2px; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:all 0.15s; }
+.check-box.checked { background:var(--navy); border-color:var(--navy); }
+.check-box.checked::after { content:'✓'; color:var(--gold); font-weight:800; font-size:14px; }
+.check-text { flex:1; }
+.check-num { font-size:11px; font-weight:700; color:var(--gold); text-transform:uppercase; letter-spacing:1px; margin-bottom:4px; }
+.check-question { font-size:16px; font-weight:700; color:var(--navy); margin-bottom:6px; }
+.check-why { font-size:14px; color:#666; line-height:1.6; }
+.score-section { background:white; border-radius:10px; padding:36px; margin:24px auto; box-shadow:0 2px 12px rgba(0,0,0,0.06); }
+.score-section h2 { font-size:22px; color:var(--navy); margin-bottom:24px; }
+.score-bar { display:flex; align-items:center; gap:16px; margin-bottom:20px; padding:18px; border-radius:8px; }
+.score-bar.green { background:#f0fdf4; border-left:4px solid #22c55e; }
+.score-bar.yellow { background:#fffbeb; border-left:4px solid #f59e0b; }
+.score-bar.red { background:#fff1f2; border-left:4px solid #ef4444; }
+.score-label { font-size:18px; font-weight:800; min-width:90px; }
+.score-bar.green .score-label { color:#16a34a; }
+.score-bar.yellow .score-label { color:#d97706; }
+.score-bar.red .score-label { color:#dc2626; }
+.score-desc { font-size:14px; color:#555; line-height:1.6; }
+.score-tracker { background:#f8f9fa; border-radius:8px; padding:20px; margin-bottom:24px; text-align:center; }
+.score-display { font-size:48px; font-weight:800; color:var(--navy); }
+.score-display span { font-size:24px; color:#888; }
+.score-label-main { font-size:14px; color:#666; margin-top:4px; }
+.cta-card { background:linear-gradient(135deg,var(--navy),var(--navy-light)); color:white; border-radius:10px; padding:40px; margin:24px auto 40px; text-align:center; box-shadow:0 4px 20px rgba(26,54,93,0.3); }
+.cta-card h3 { font-size:26px; font-weight:800; margin-bottom:12px; }
+.cta-card p { font-size:16px; color:rgba(255,255,255,0.85); margin-bottom:28px; max-width:480px; margin-left:auto; margin-right:auto; }
+.cta-btn { display:inline-block; background:var(--gold); color:var(--navy); font-weight:800; padding:16px 36px; border-radius:6px; text-decoration:none; font-size:16px; transition:background 0.2s; }
+.cta-btn:hover { background:#ffed4e; }
+.contact-row { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:18px; }
+.contact-row a { color:rgba(255,255,255,0.7); font-size:14px; text-decoration:none; }
+.contact-row a:hover { color:var(--gold); }
+footer { background:var(--dark); color:rgba(255,255,255,0.6); text-align:center; padding:24px 20px; font-size:13px; margin-top:0; }
+footer a { color:var(--gold); text-decoration:none; }
+@media(max-width:600px) { .hero h1 { font-size:26px; } }
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">JWAT ENTERPRISES INC<span>AI-Powered Business Consulting</span></div>
+</header>
+
+<section class="hero">
+  <div class="hero-badge">Free Resource</div>
+  <h1>The 5-Minute Sales Audit Checklist</h1>
+  <p>10 questions every small business owner must answer to find out exactly why they're not closing more deals.</p>
+</section>
+
+<div class="container">
+  <div class="intro-box">
+    <p>Most small businesses don't have a <strong>lead problem</strong> — they have a <strong>sales process problem</strong>. This checklist is the same diagnostic framework Wayne uses in every new client audit. Go through each question honestly. Your score at the end will tell you exactly where your revenue is leaking.</p>
+  </div>
+
+  <div class="score-section">
+    <h2>Your Score</h2>
+    <div class="score-tracker">
+      <div class="score-display" id="scoreNum">0<span>/10</span></div>
+      <div class="score-label-main">Yes answers</div>
+    </div>
+    <div class="score-bar green"><div class="score-label">8–10 Yes</div><div class="score-desc">You're ahead of 90% of small businesses. Let's talk about scaling what's working.</div></div>
+    <div class="score-bar yellow"><div class="score-label">5–7 Yes</div><div class="score-desc">Solid foundation — but the gaps are actively costing you revenue every month.</div></div>
+    <div class="score-bar red"><div class="score-label">0–4 Yes</div><div class="score-desc">Immediate opportunity. Your sales process needs a rebuild — and fast.</div></div>
+  </div>
+
+  <div class="checklist-card">
+    <h2>The 10-Question Audit</h2>
+
+    <div class="check-item">
+      <div class="check-box" onclick="toggleCheck(this)" data-n="1"></div>
+      <div class="check-text">
+        <div class="check-num">Question 1</div>
+        <div class="check-question">Do you have a defined sales process with clear stages?</div>
+        <div class="check-why">If you can't draw it on a whiteboard in 60 seconds, you don't have one. A vague process means inconsistent results.</div>
+      </div>
+    </div>
+
+    <div class="check-item">
+      <div class="check-box" onclick="toggleCheck(this)" data-n="2"></div>
+      <div class="check-text">
+        <div class="check-num">Question 2</div>
+        <div class="check-question">Do you follow up with leads at least 5 times before giving up?</div>
+        <div class="check-why">80% of sales happen between the 5th and 12th contact. Most businesses stop at 1 or 2 — and leave money on the table every time.</div>
+      </div>
+    </div>
+
+    <div class="check-item">
+      <div class="check-box" onclick="toggleCheck(this)" data-n="3"></div>
+      <div class="check-text">
+        <div class="check-num">Question 3</div>
+        <div class="check-question">Do you track your close rate month over month?</div>
+        <div class="check-why">You can't improve what you don't measure. If you don't know your close rate, you're flying blind on your most important number.</div>
+      </div>
+    </div>
+
+    <div class="check-item">
+      <div class="check-box" onclick="toggleCheck(this)" data-n="4"></div>
+      <div class="check-text">
+        <div class="check-num">Question 4</div>
+        <div class="check-question">Do you have a written value proposition that separates you from competitors?</div>
+        <div class="check-why">"We provide great service" is not a value proposition. If your prospect can't instantly understand why you're different, they'll pick whoever is cheapest.</div>
+      </div>
+    </div>
+
+    <div class="check-item">
+      <div class="check-box" onclick="toggleCheck(this)" data-n="5"></div>
+      <div class="check-text">
+        <div class="check-num">Question 5</div>
+        <div class="check-question">Do you know your average deal size and sales cycle length?</div>
+        <div class="check-why">Without these numbers, you can't forecast revenue, plan hiring, or set realistic monthly targets. These are table stakes.</div>
+      </div>
+    </div>
+
+    <div class="check-item">
+      <div class="check-box" onclick="toggleCheck(this)" data-n="6"></div>
+      <div class="check-text">
+        <div class="check-num">Question 6</div>
+        <div class="check-question">Do you use a CRM or consistent system to track every lead?</div>
+        <div class="check-why">If leads live in your head, sticky notes, or a spreadsheet you haven't updated in a month — leads are falling through the cracks daily.</div>
+      </div>
+    </div>
+
+    <div class="check-item">
+      <div class="check-box" onclick="toggleCheck(this)" data-n="7"></div>
+      <div class="check-text">
+        <div class="check-num">Question 7</div>
+        <div class="check-question">Do you ask every satisfied client for a referral?</div>
+        <div class="check-why">Referrals close at 70%+ versus 10–20% for cold leads. If you're not asking, you're leaving your best leads unactivated.</div>
+      </div>
+    </div>
+
+    <div class="check-item">
+      <div class="check-box" onclick="toggleCheck(this)" data-n="8"></div>
+      <div class="check-text">
+        <div class="check-num">Question 8</div>
+        <div class="check-question">Do you have a discovery call framework or script?</div>
+        <div class="check-why">Winging discovery calls means you're pitching before diagnosing. Prospects feel sold to instead of helped — and the close rate craters.</div>
+      </div>
+    </div>
+
+    <div class="check-item">
+      <div class="check-box" onclick="toggleCheck(this)" data-n="9"></div>
+      <div class="check-text">
+        <div class="check-num">Question 9</div>
+        <div class="check-question">Do you know your cost per lead from each channel?</div>
+        <div class="check-why">If you don't know which channels produce the cheapest, highest-converting leads, you're probably spending money on the wrong ones.</div>
+      </div>
+    </div>
+
+    <div class="check-item">
+      <div class="check-box" onclick="toggleCheck(this)" data-n="10"></div>
+      <div class="check-text">
+        <div class="check-num">Question 10</div>
+        <div class="check-question">Do you have an email or follow-up sequence for leads who say "not right now"?</div>
+        <div class="check-why">"Not right now" means "sell me later." Without a nurture sequence, those warm leads go cold and eventually hire your competitor.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="cta-card">
+    <h3>What's Your Score Telling You?</h3>
+    <p>Every "No" on this list is revenue walking out the door. A 30-minute free audit with Wayne will show you exactly which gaps to fix first — and how.</p>
+    <a href="https://calendly.com/biz-jwatenterprisesinc" class="cta-btn">Book Your Free 30-Min Audit &rarr;</a>
+    <div class="contact-row">
+      <a href="tel:813-321-5686">&#128222; 813-321-5686</a>
+      <a href="mailto:biz@jwatenterprisesinc.com">&#9993; biz@jwatenterprisesinc.com</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>&copy; 2026 JWAT Enterprises Inc &nbsp;&middot;&nbsp; <a href="https://www.jwatenterprisesinc.com">jwatenterprisesinc.com</a> &nbsp;&middot;&nbsp; <a href="mailto:biz@jwatenterprisesinc.com">biz@jwatenterprisesinc.com</a></p>
+</footer>
+
+<script>
+var score = 0;
+function toggleCheck(el) {
+  el.classList.toggle('checked');
+  score = document.querySelectorAll('.check-box.checked').length;
+  document.getElementById('scoreNum').innerHTML = score + '<span>/10</span>';
+}
+</script>
+</body>
+</html>
