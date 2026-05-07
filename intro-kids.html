@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Intro Kids! — Books That Make Money Make Sense</title>
+  <meta name="description" content="Interactive financial literacy books for kids ages 10–18. Choose-your-path stories that teach real money skills without the worksheets."/>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:  #1A2E4A;
+      --green: #2ECC71;
+      --gold:  #F4C430;
+      --white: #FFFFFF;
+      --cream: #FFF8EE;
+      --text:  #1A2E4A;
+      --muted: #6B7A8D;
+    }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: var(--white);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--navy);
+      position: relative;
+      overflow: hidden;
+      padding: 60px 24px 72px;
+      text-align: center;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 60%, rgba(244,196,48,0.12) 0%, transparent 70%),
+        repeating-linear-gradient(45deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1px, transparent 1px, transparent 40px);
+    }
+    .hero-inner { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; }
+
+    .hero-logo {
+      height: 110px;
+      object-fit: contain;
+      margin-bottom: 24px;
+      filter: drop-shadow(0 4px 16px rgba(0,0,0,0.4));
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--navy);
+      font-weight: 800;
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 6px 18px;
+      border-radius: 30px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: clamp(32px, 6vw, 58px);
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+    .hero h1 span { color: var(--gold); }
+
+    .hero p {
+      font-size: clamp(15px, 2.5vw, 19px);
+      color: rgba(255,255,255,0.72);
+      max-width: 560px;
+      margin: 0 auto 32px;
+      line-height: 1.6;
+      font-weight: 600;
+    }
+
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    .stat {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+    }
+    .stat-num {
+      font-size: 28px;
+      font-weight: 900;
+      color: var(--green);
+    }
+    .stat-label {
+      font-size: 11px;
+      color: rgba(255,255,255,0.45);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    /* ── SECTION LABEL ── */
+    .section-label {
+      text-align: center;
+      padding: 64px 24px 0;
+    }
+    .section-tag {
+      display: inline-block;
+      background: rgba(46,204,113,0.1);
+      border: 1.5px solid var(--green);
+      color: var(--green);
+      font-weight: 800;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 5px 16px;
+      border-radius: 30px;
+      margin-bottom: 14px;
+    }
+    .section-label h2 {
+      font-size: clamp(26px, 4vw, 40px);
+      font-weight: 900;
+      color: var(--navy);
+      margin-bottom: 10px;
+    }
+    .section-label p {
+      font-size: 16px;
+      color: var(--muted);
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    /* ── BOOKS GRID ── */
+    .books-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 32px;
+      max-width: 1100px;
+      margin: 48px auto 0;
+      padding: 0 24px 80px;
+    }
+
+    .book-card {
+      background: var(--white);
+      border-radius: 20px;
+      box-shadow: 0 4px 24px rgba(26,46,74,0.10);
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: flex;
+      flex-direction: column;
+    }
+    .book-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 40px rgba(26,46,74,0.18);
+    }
+
+    .book-cover-wrap {
+      position: relative;
+      background: var(--navy);
+      padding: 0;
+      overflow: hidden;
+    }
+    .book-cover-wrap img {
+      width: 100%;
+      display: block;
+      aspect-ratio: 8.5 / 11;
+      object-fit: cover;
+    }
+    .book-badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 5px 12px;
+      border-radius: 20px;
+      letter-spacing: 1px;
+    }
+    .badge-1 { background: var(--gold); color: var(--navy); }
+    .badge-2 { background: var(--gold); color: var(--navy); }
+    .badge-3 { background: var(--green); color: var(--navy); }
+
+    .book-body {
+      padding: 24px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .book-series {
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .book-title {
+      font-size: 22px;
+      font-weight: 900;
+      color: var(--navy);
+      line-height: 1.2;
+    }
+
+    .book-desc {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.6;
+      flex: 1;
+    }
+
+    .book-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .meta-pill {
+      background: #F0F4F8;
+      border-radius: 20px;
+      padding: 4px 12px;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--muted);
+    }
+
+    .book-footer {
+      padding: 0 24px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .book-price {
+      font-size: 28px;
+      font-weight: 900;
+      color: var(--navy);
+    }
+    .book-price span {
+      font-size: 14px;
+      color: var(--muted);
+      font-weight: 600;
+    }
+    .btn-buy {
+      display: inline-block;
+      background: var(--green);
+      color: var(--navy);
+      font-weight: 900;
+      font-size: 14px;
+      padding: 12px 24px;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: background 0.15s, transform 0.15s;
+      white-space: nowrap;
+    }
+    .btn-buy:hover { background: #27ae60; transform: scale(1.03); }
+    .btn-buy-gold { background: var(--gold); }
+    .btn-buy-gold:hover { background: #dba520; }
+
+    /* ── WHY SECTION ── */
+    .why-section {
+      background: var(--cream);
+      padding: 72px 24px;
+    }
+    .why-inner { max-width: 1000px; margin: 0 auto; }
+    .why-inner h2 {
+      text-align: center;
+      font-size: clamp(24px, 4vw, 36px);
+      font-weight: 900;
+      color: var(--navy);
+      margin-bottom: 48px;
+    }
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px;
+    }
+    .why-card {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 28px 24px;
+      box-shadow: 0 2px 12px rgba(26,46,74,0.07);
+      text-align: center;
+    }
+    .why-icon { font-size: 40px; margin-bottom: 14px; }
+    .why-title { font-size: 16px; font-weight: 800; color: var(--navy); margin-bottom: 8px; }
+    .why-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+    /* ── BUNDLE STRIP ── */
+    .bundle-strip {
+      background: var(--navy);
+      padding: 56px 24px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .bundle-strip::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 70% 80% at 50% 50%, rgba(46,204,113,0.1) 0%, transparent 70%);
+    }
+    .bundle-inner { position: relative; z-index: 1; max-width: 680px; margin: 0 auto; }
+    .bundle-strip h2 { font-size: clamp(24px, 4vw, 36px); font-weight: 900; color: var(--white); margin-bottom: 12px; }
+    .bundle-strip h2 span { color: var(--gold); }
+    .bundle-strip p { font-size: 16px; color: rgba(255,255,255,0.65); margin-bottom: 28px; font-weight: 600; }
+    .bundle-prices {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+    }
+    .price-was { font-size: 22px; color: rgba(255,255,255,0.35); text-decoration: line-through; font-weight: 700; }
+    .price-now { font-size: 42px; font-weight: 900; color: var(--gold); }
+    .price-save {
+      background: var(--green); color: var(--navy);
+      font-weight: 800; font-size: 13px;
+      padding: 5px 14px; border-radius: 20px;
+    }
+    .btn-bundle {
+      display: inline-block;
+      background: var(--green);
+      color: var(--navy);
+      font-weight: 900;
+      font-size: 18px;
+      padding: 16px 48px;
+      border-radius: 12px;
+      text-decoration: none;
+      transition: background 0.15s;
+    }
+    .btn-bundle:hover { background: #27ae60; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy);
+      border-top: 1px solid rgba(255,255,255,0.07);
+      padding: 32px 24px;
+      text-align: center;
+    }
+    footer img { height: 50px; object-fit: contain; margin-bottom: 12px; filter: drop-shadow(0 2px 6px rgba(0,0,0,0.4)); }
+    footer p { font-size: 12px; color: rgba(255,255,255,0.35); line-height: 1.8; }
+    footer a { color: var(--green); text-decoration: none; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      .hero-stats { gap: 20px; }
+      .books-grid { grid-template-columns: 1fr; }
+      .book-footer { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <img src="https://raw.githubusercontent.com/Jwatenterprises/Jwat-enterprises-inc/main/cover-money-game.png"
+         class="hero-logo"
+         onerror="this.style.display='none'"
+         style="height:90px;border-radius:12px;"
+         alt="Intro Kids"/>
+    <div class="hero-badge">Intro Kids! Financial Series</div>
+    <h1>Books That Make<br><span>Money Make Sense</span></h1>
+    <p>Interactive stories for kids ages 10–18. Every decision has a consequence. Every chapter builds a skill. No worksheets. No lectures. Just real money lessons wrapped in a game.</p>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-num">3</div><div class="stat-label">Books</div></div>
+      <div class="stat"><div class="stat-num">7</div><div class="stat-label">Life Skills</div></div>
+      <div class="stat"><div class="stat-num">Ages<br>10–18</div><div class="stat-label">Age Range</div></div>
+      <div class="stat"><div class="stat-num">$0</div><div class="stat-label">Boring Content</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKS -->
+<div class="section-label">
+  <div class="section-tag">The Collection</div>
+  <h2>Pick Your Book. Start the Game.</h2>
+  <p>Each book is a standalone story — buy one, buy all three. Instant digital download after purchase.</p>
+</div>
+
+<div class="books-grid">
+
+  <!-- Book 1 -->
+  <div class="book-card">
+    <div class="book-cover-wrap">
+      <img src="https://raw.githubusercontent.com/Jwatenterprises/Jwat-enterprises-inc/main/cover-money-game.png"
+           alt="The Money Game cover"/>
+      <span class="book-badge badge-1">🏆 Flagship</span>
+    </div>
+    <div class="book-body">
+      <div class="book-series">Book 1 · Ages 10–15</div>
+      <div class="book-title">The Money Game</div>
+      <div class="book-desc">Follow Jordan through a summer of earning and deciding. At every chapter YOU choose what happens to the money — and your wallet total reveals your Money Score at the end.</div>
+      <div class="book-meta">
+        <span class="meta-pill">7 Chapters</span>
+        <span class="meta-pill">Choose-Your-Path</span>
+        <span class="meta-pill">XP Badges</span>
+      </div>
+    </div>
+    <div class="book-footer">
+      <div class="book-price">$9.99 <span>PDF download</span></div>
+      <a href="https://jwatbiz.gumroad.com/l/mztaob" target="_blank" class="btn-buy">Get It Now →</a>
+    </div>
+  </div>
+
+  <!-- Book 2 -->
+  <div class="book-card">
+    <div class="book-cover-wrap">
+      <img src="https://raw.githubusercontent.com/Jwatenterprises/Jwat-enterprises-inc/main/cover-lemonade-empire.png"
+           alt="The Lemonade Empire cover"/>
+      <span class="book-badge badge-2">🍋 Ages 8–12</span>
+    </div>
+    <div class="book-body">
+      <div class="book-series">Book 2 · Ages 8–12</div>
+      <div class="book-title">The Lemonade Empire</div>
+      <div class="book-desc">One stand. One big idea. A funny, fast-paced story about building something from nothing — and what happens when your first business idea doesn't go according to plan.</div>
+      <div class="book-meta">
+        <span class="meta-pill">Entrepreneurship</span>
+        <span class="meta-pill">Interactive</span>
+        <span class="meta-pill">Ages 8–12</span>
+      </div>
+    </div>
+    <div class="book-footer">
+      <div class="book-price">$6.99 <span>PDF download</span></div>
+      <a href="https://jwatbiz.gumroad.com/l/bcozhu" target="_blank" class="btn-buy btn-buy-gold">Get It Now →</a>
+    </div>
+  </div>
+
+  <!-- Book 3 -->
+  <div class="book-card">
+    <div class="book-cover-wrap">
+      <img src="https://raw.githubusercontent.com/Jwatenterprises/Jwat-enterprises-inc/main/cover-money-before-18.png"
+           alt="Money Before 18 cover"/>
+      <span class="book-badge badge-3">🔑 Ages 13–18</span>
+    </div>
+    <div class="book-body">
+      <div class="book-series">Book 3 · Ages 13–18</div>
+      <div class="book-title">Money Before 18</div>
+      <div class="book-desc">The straight-talk financial guide for teens. Savings, income, credit, investing, and every money move that matters before you turn 18 — explained simply and directly.</div>
+      <div class="book-meta">
+        <span class="meta-pill">Teen Finance</span>
+        <span class="meta-pill">Real Skills</span>
+        <span class="meta-pill">Ages 13–18</span>
+      </div>
+    </div>
+    <div class="book-footer">
+      <div class="book-price">$9.99 <span>PDF download</span></div>
+      <a href="https://jwatbiz.gumroad.com/l/wddjtg" target="_blank" class="btn-buy">Get It Now →</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- WHY SECTION -->
+<section class="why-section">
+  <div class="why-inner">
+    <h2>Why Kids Actually Finish These Books</h2>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon">🎮</div>
+        <div class="why-title">Feels Like a Game</div>
+        <div class="why-desc">Choose-your-path decisions, XP badges, wallet trackers — every page feels like entertainment, not school.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">💡</div>
+        <div class="why-title">Real Lessons</div>
+        <div class="why-desc">Budgeting, debt, investing, emergency funds — introduced naturally through story, not lectures or worksheets.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">📱</div>
+        <div class="why-title">Built for Short Attention Spans</div>
+        <div class="why-desc">Short chapters, interactive choices, visual cues — designed for kids who live on screens, not textbooks.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">👨‍👩‍👧</div>
+        <div class="why-title">Parent Discussion Guide</div>
+        <div class="why-desc">Every book includes a parent guide with 7 conversation starters — turning story time into real family money talks.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BUNDLE CTA -->
+<section class="bundle-strip">
+  <div class="bundle-inner">
+    <h2>Get the <span>Complete Collection</span></h2>
+    <p>All 3 books. Every age from 8 to 18 covered. One purchase — instant download.</p>
+    <div class="bundle-prices">
+      <span class="price-was">$26.97</span>
+      <span class="price-now">$21.99</span>
+      <span class="price-save">Save $5</span>
+    </div>
+    <a href="https://jwatbiz.gumroad.com" target="_blank" class="btn-bundle">Get All 3 Books →</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>
+    <strong style="color:white;">Intro Kids!</strong> is a financial literacy brand for children and teens.<br>
+    Published by <a href="https://www.jwatenterprisesinc.com">Jwat Enterprise Inc.</a> · Riverview, Florida<br>
+    Questions? <a href="mailto:biz@jwatenterprisesinc.com">biz@jwatenterprisesinc.com</a>
+  </p>
+</footer>
+
+</body>
+</html>
