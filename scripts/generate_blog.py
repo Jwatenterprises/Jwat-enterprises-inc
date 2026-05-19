@@ -3,39 +3,87 @@ import os
 import re
 from datetime import datetime
 
-EXISTING_TOPICS = [
-    "why-small-business-not-generating-leads",
-    "5-step-sales-funnel",
-    "cold-leads-to-paying-clients",
-    "rok-financial-business-loan-funding",
-]
-
-TOPIC_POOL = [
-    "How to Build a Personal Brand That Attracts Clients on Autopilot",
-    "The Small Business Owner's Guide to Email Marketing in 2026",
-    "Why Most Small Business Websites Don't Convert (And How to Fix Yours)",
-    "How to Price Your Services Without Leaving Money on the Table",
-    "The 7 Financial Metrics Every Small Business Owner Must Track",
-    "How to Get Your First 10 Clients Without Paid Advertising",
-    "What Is a Sales CRM and Does Your Small Business Need One?",
-    "How to Use LinkedIn to Generate B2B Leads for Free",
-    "The Small Business Owner's Guide to Building Business Credit",
-    "How to Create a 90-Day Revenue Plan for Your Business",
-    "Why Your Follow-Up Strategy Is Costing You Clients",
-    "How to Write a Business Proposal That Closes Deals",
-    "The Truth About SBA Loans: What Banks Won't Tell You",
-    "How to Automate Your Client Onboarding Process",
-    "5 Signs Your Business Needs a Sales Consultant Right Now",
-    "How to Turn Happy Clients Into a Referral Machine",
-    "What Every Small Business Owner Needs to Know About Cash Flow",
-    "How to Build a Marketing Strategy on a $500 Budget",
-    "The Biggest Mistakes Small Business Owners Make With Facebook Ads",
-    "How to Scale from $5K to $10K Monthly Revenue",
-    "Understanding Business Line of Credit vs. Term Loan: Which Is Right for You?",
-    "How to Hire Your First Employee Without Breaking the Bank",
-    "The Power of Niche Marketing: Why Trying to Reach Everyone Loses Everyone",
-    "How to Set Up Google Analytics for Your Small Business Website",
-    "Invoice Factoring Explained: Turn Unpaid Invoices Into Immediate Cash",
+PARTNER_CAMPAIGNS = [
+    {
+        "partner": "Nav",
+        "category": "Business Funding",
+        "topic": "How to Build Business Credit Before You Need Funding",
+        "slug": "build-business-credit-before-funding",
+        "url": "https://nav.nkwcmr.net/c/6782322/1849064/2410",
+        "cta_headline": "Check Your Business Credit With Nav",
+        "cta_body": "Nav helps small business owners monitor business credit, understand funding readiness, and find better financing options before cash gets tight.",
+        "cta_label": "Start With Nav",
+    },
+    {
+        "partner": "ROK Financial",
+        "category": "Business Funding",
+        "topic": "Working Capital vs Line of Credit: Which Funding Option Fits Your Business?",
+        "slug": "working-capital-vs-line-of-credit",
+        "url": "https://go.mypartner.io/business-financing/?ref=001Qk00000dxUurIAE",
+        "cta_headline": "Compare Business Funding Options With ROK Financial",
+        "cta_body": "ROK Financial helps small business owners explore working capital, term loans, lines of credit, and other funding options through one application path.",
+        "cta_label": "Explore Funding",
+    },
+    {
+        "partner": "Upfirst",
+        "category": "Lead Generation",
+        "topic": "How Missed Calls Turn Into Lost Revenue for Small Businesses",
+        "slug": "missed-calls-lost-revenue-small-business",
+        "url": "https://upfirst.ai?plid=135267",
+        "cta_headline": "Let Upfirst Answer Every Lead Call",
+        "cta_body": "Upfirst gives small businesses an AI receptionist that answers calls, qualifies leads, books appointments, and keeps the front end of the funnel covered.",
+        "cta_label": "Try Upfirst",
+    },
+    {
+        "partner": "Tax Services",
+        "category": "Financial Management",
+        "topic": "Quarterly Tax Planning for Small Business Owners Who Want Fewer Surprises",
+        "slug": "quarterly-tax-planning-small-business",
+        "url": "https://form.jotform.com/250436502189153",
+        "cta_headline": "Start Your Small Business Tax Intake",
+        "cta_body": "Get organized before tax season. Use the JWAT tax intake form to start the process for small business tax preparation and planning support.",
+        "cta_label": "Complete Tax Intake",
+    },
+    {
+        "partner": "Nav",
+        "category": "Business Funding",
+        "topic": "Business Credit Monitoring: What Small Business Owners Should Watch Monthly",
+        "slug": "business-credit-monitoring-monthly",
+        "url": "https://nav.nkwcmr.net/c/6782322/1849064/2410",
+        "cta_headline": "Monitor Your Business Credit With Nav",
+        "cta_body": "Nav gives business owners a clearer view of their credit profile, funding matches, and financial health signals.",
+        "cta_label": "Check Your Credit",
+    },
+    {
+        "partner": "ROK Financial",
+        "category": "Business Funding",
+        "topic": "How to Prepare Your Business Before Applying for Funding",
+        "slug": "prepare-business-before-applying-funding",
+        "url": "https://go.mypartner.io/business-financing/?ref=001Qk00000dxUurIAE",
+        "cta_headline": "See What Funding Your Business May Qualify For",
+        "cta_body": "ROK Financial can help you compare funding options once your revenue, bank statements, and business basics are ready.",
+        "cta_label": "Review Funding Options",
+    },
+    {
+        "partner": "Upfirst",
+        "category": "Lead Generation",
+        "topic": "The 24/7 Lead Capture System Every Local Service Business Needs",
+        "slug": "24-7-lead-capture-local-service-business",
+        "url": "https://upfirst.ai?plid=135267",
+        "cta_headline": "Capture More Calls With Upfirst",
+        "cta_body": "Upfirst helps turn after-hours and missed calls into captured leads, booked appointments, and cleaner follow-up.",
+        "cta_label": "Set Up Upfirst",
+    },
+    {
+        "partner": "Tax Services",
+        "category": "Financial Management",
+        "topic": "Tax Strategy vs Tax Preparation: What Small Business Owners Need to Know",
+        "slug": "tax-strategy-vs-tax-preparation",
+        "url": "https://form.jotform.com/250436502189153",
+        "cta_headline": "Get Your Tax Intake Started",
+        "cta_body": "JWAT connects small business owners with tax preparation and planning support so the numbers stay cleaner year-round.",
+        "cta_label": "Start Tax Intake",
+    },
 ]
 
 BLOG_SYSTEM_PROMPT = """You are a business growth expert writing for JWAT Enterprises Inc — an AI-powered business consulting firm based in Riverview, FL that helps small businesses and startups with sales, marketing, financial management, and sales funnel consulting.
@@ -50,6 +98,10 @@ Business details:
 - Email: biz@jwatenterprisesinc.com
 - Phone: 813-321-5686
 - Target: Startups and small/medium businesses
+- Revenue model: JWAT Enterprise Inc's main income is affiliate service partnerships.
+- Content priority: Every scheduled post must reinforce one service partner, educate the reader around a buying problem, and drive qualified clicks to that partner's link.
+- Partner posts should read like useful business guidance, not thin ads. Mention the assigned partner naturally and include the assigned partner link in the body at least twice.
+- Do not repeat the same topic angle week after week. Rotate partner/service categories so Nav, ROK Financial, Upfirst, and Tax Services each receive ongoing lead-generation content.
 
 Design system (match exactly):
 - Navy: #1a365d
@@ -127,7 +179,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
     <div class="cta-box">
         <h3>CTA_HEADLINE_PLACEHOLDER</h3>
         <p>CTA_BODY_PLACEHOLDER</p>
-        <a href="https://calendly.com/biz-jwatenterprisesinc" class="cta-btn">Book Your Free Audit &rarr;</a>
+        <a href="CTA_URL_PLACEHOLDER" target="_blank" rel="noopener" class="cta-btn">CTA_LABEL_PLACEHOLDER &rarr;</a>
     </div>
     <a href="index.html" class="back-link">&larr; Back to Blog</a>
 </article>
@@ -158,19 +210,33 @@ PUBLISH_TOOL = {
 }
 
 
-def pick_topic(existing):
-    for topic in TOPIC_POOL:
-        slug = re.sub(r'[^a-z0-9]+', '-', topic.lower()).strip('-')
-        if not any(slug[:20] in e for e in existing):
-            return topic
-    return f"Small Business Growth Strategy: Key Insights for {datetime.now().strftime('%B %Y')}"
+def load_existing_slugs(blog_dir):
+    return {
+        os.path.splitext(name)[0]
+        for name in os.listdir(blog_dir)
+        if name.endswith(".html") and name != "index.html"
+    }
+
+
+def pick_campaign(existing_slugs, pub_date):
+    week_index = int(pub_date.strftime("%U"))
+    campaigns = PARTNER_CAMPAIGNS[week_index % len(PARTNER_CAMPAIGNS):] + PARTNER_CAMPAIGNS[:week_index % len(PARTNER_CAMPAIGNS)]
+
+    for campaign in campaigns:
+        if campaign["slug"] not in existing_slugs:
+            return campaign
+
+    fallback = PARTNER_CAMPAIGNS[week_index % len(PARTNER_CAMPAIGNS)].copy()
+    fallback["topic"] = f"{fallback['topic']} ({pub_date.strftime('%B %Y')} Update)"
+    fallback["slug"] = f"{fallback['slug']}-{pub_date.strftime('%Y-%m-%d')}"
+    return fallback
 
 
 def slugify(title):
     return re.sub(r'[^a-z0-9]+', '-', title.lower()).strip('-')[:60]
 
 
-def render_html(data, pub_date):
+def render_html(data, pub_date, campaign):
     html = HTML_TEMPLATE
     html = html.replace("TITLE_PLACEHOLDER", data["title"])
     html = html.replace("META_DESC_PLACEHOLDER", data["meta_description"])
@@ -180,11 +246,13 @@ def render_html(data, pub_date):
     html = html.replace("BODY_PLACEHOLDER", data["body_html"])
     html = html.replace("CTA_HEADLINE_PLACEHOLDER", data["cta_headline"])
     html = html.replace("CTA_BODY_PLACEHOLDER", data["cta_body"])
+    html = html.replace("CTA_URL_PLACEHOLDER", campaign["url"])
+    html = html.replace("CTA_LABEL_PLACEHOLDER", campaign["cta_label"])
     html = html.replace("YEAR_PLACEHOLDER", str(pub_date.year))
     return html
 
 
-def generate_post(topic, pub_date):
+def generate_post(campaign, pub_date):
     client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
 
     message = client.messages.create(
@@ -193,18 +261,29 @@ def generate_post(topic, pub_date):
         system=BLOG_SYSTEM_PROMPT,
         tools=[PUBLISH_TOOL],
         tool_choice={"type": "any"},
-        messages=[{"role": "user", "content": f'Write a complete blog post for JWAT Enterprises Inc on this topic: "{topic}"'}]
+        messages=[{
+            "role": "user",
+            "content": (
+                f'Write a complete blog post for JWAT Enterprises Inc on this topic: "{campaign["topic"]}".\n'
+                f'Assigned service partner: {campaign["partner"]}\n'
+                f'Partner link to include naturally in the body: {campaign["url"]}\n'
+                f'Category: {campaign["category"]}\n'
+                f'End CTA headline: {campaign["cta_headline"]}\n'
+                f'End CTA body: {campaign["cta_body"]}\n'
+                "The post must be written to generate qualified clicks to the service partner while still giving practical advice."
+            )
+        }]
     )
 
     tool_block = next(b for b in message.content if b.type == "tool_use")
     data = tool_block.input
 
     return {
-        "slug":     data.get("slug") or slugify(data["title"]),
+        "slug":     campaign["slug"],
         "title":    data["title"],
-        "category": data["category"],
+        "category": campaign["category"],
         "excerpt":  data["excerpt"],
-        "html":     render_html(data, pub_date),
+        "html":     render_html(data, pub_date, campaign),
         "date":     pub_date.strftime("%B %d, %Y"),
     }
 
@@ -236,10 +315,11 @@ if __name__ == "__main__":
     index_path = os.path.join(blog_dir, "index.html")
     pub_date = datetime.now()
 
-    topic = pick_topic(EXISTING_TOPICS)
-    print(f"Generating post: {topic}")
+    existing_slugs = load_existing_slugs(blog_dir)
+    campaign = pick_campaign(existing_slugs, pub_date)
+    print(f"Generating partner post: {campaign['partner']} — {campaign['topic']}")
 
-    post = generate_post(topic, pub_date)
+    post = generate_post(campaign, pub_date)
     print(f"Slug: {post['slug']}")
 
     post_path = os.path.join(blog_dir, f"{post['slug']}.html")
