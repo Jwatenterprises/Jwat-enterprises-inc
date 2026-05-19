@@ -132,7 +132,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
     <a href="index.html" class="back-link">&larr; Back to Blog</a>
 </article>
 <footer>
-    <p>&copy; YEAR_PLACEHOLDER JWAT Enterprises Inc &nbsp;&middot;&nbsp; <a href="https://www.jwatenterprisesinc.com">jwatenterprisesinc.com</a> &nbsp;&middot;&nbsp; <a href="mailto:biz@jwatenterprisesinc.com">biz@jwatenterprisesinc.com</a></p>
+    <p>&copy; YEAR_PLACEHOLDER JWAT Enterprises Inc &nbsp;&middot;&nbsp; <a href="https://www.jwatenterprisesinc.com">jwatenterprisesinc.com</a> &nbsp;&middot;&nbsp; <a href="mailto:biz@jwatenterprisesinc.com">biz@jwatenterprisesinc.com</a> &nbsp;&middot;&nbsp; <a href="https://www.facebook.com/profile.php?id=61567645495673" target="_blank" rel="noopener">Facebook</a> &nbsp;&middot;&nbsp; <a href="https://www.instagram.com/jwatenterprise/" target="_blank" rel="noopener">Instagram</a></p>
 </footer>
 </body>
 </html>"""
