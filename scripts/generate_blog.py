@@ -45,6 +45,16 @@ PARTNER_CAMPAIGNS = [
         "cta_label": "Complete Tax Intake",
     },
     {
+        "partner": "GoHighLevel",
+        "category": "Sales Strategy",
+        "topic": "How to Build a CRM Follow-Up System That Stops Leads From Slipping Away",
+        "slug": "crm-follow-up-system-stop-losing-leads",
+        "url": "https://affiliate.gohighlevel.com?sref=lb90qrm",
+        "cta_headline": "Build Your Follow-Up System With GoHighLevel",
+        "cta_body": "GoHighLevel gives small businesses one place for CRM, pipelines, funnels, email, SMS, calendar booking, and automated follow-up.",
+        "cta_label": "Start GoHighLevel",
+    },
+    {
         "partner": "Nav",
         "category": "Business Funding",
         "topic": "Business Credit Monitoring: What Small Business Owners Should Watch Monthly",
@@ -84,6 +94,16 @@ PARTNER_CAMPAIGNS = [
         "cta_body": "JWAT connects small business owners with tax preparation and planning support so the numbers stay cleaner year-round.",
         "cta_label": "Start Tax Intake",
     },
+    {
+        "partner": "GoHighLevel",
+        "category": "Marketing",
+        "topic": "Why Small Businesses Need CRM, Funnels, and Follow-Up in One System",
+        "slug": "crm-funnels-follow-up-one-system",
+        "url": "https://affiliate.gohighlevel.com?sref=lb90qrm",
+        "cta_headline": "Run Your Growth System Inside GoHighLevel",
+        "cta_body": "GoHighLevel replaces scattered tools with one operating system for lead capture, nurturing, booking, and sales pipeline management.",
+        "cta_label": "Try GoHighLevel",
+    },
 ]
 
 BLOG_SYSTEM_PROMPT = """You are a business growth expert writing for JWAT Enterprises Inc — an AI-powered business consulting firm based in Riverview, FL that helps small businesses and startups with sales, marketing, financial management, and sales funnel consulting.
@@ -101,7 +121,7 @@ Business details:
 - Revenue model: JWAT Enterprise Inc's main income is affiliate service partnerships.
 - Content priority: Every scheduled post must reinforce one service partner, educate the reader around a buying problem, and drive qualified clicks to that partner's link.
 - Partner posts should read like useful business guidance, not thin ads. Mention the assigned partner naturally and include the assigned partner link in the body at least twice.
-- Do not repeat the same topic angle week after week. Rotate partner/service categories so Nav, ROK Financial, Upfirst, and Tax Services each receive ongoing lead-generation content.
+- Do not repeat the same topic angle week after week. Rotate partner/service categories so Nav, ROK Financial, Upfirst, Tax Services, and GoHighLevel each receive ongoing lead-generation content.
 
 Design system (match exactly):
 - Navy: #1a365d
