@@ -337,6 +337,18 @@
       transition: background 0.15s;
     }
     .btn-bundle:hover { background: #27ae60; }
+    .bundle-actions {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+    .bundle-actions .btn-bundle {
+      font-size: 14px;
+      padding: 13px 18px;
+      min-width: 190px;
+    }
 
     /* ── FOOTER ── */
     footer {
@@ -354,6 +366,8 @@
       .hero-stats { gap: 20px; }
       .books-grid { grid-template-columns: 1fr; }
       .book-footer { flex-direction: column; align-items: flex-start; }
+      .bundle-actions { flex-direction: column; align-items: stretch; }
+      .bundle-actions .btn-bundle { width: 100%; }
     }
   </style>
 </head>
@@ -407,7 +421,7 @@
     </div>
     <div class="book-footer">
       <div class="book-price">$9.99 <span>PDF download</span></div>
-      <a href="https://jwatbiz.gumroad.com/l/mztaob" target="_blank" class="btn-buy">Get It Now →</a>
+      <a href="https://jwatbiz.gumroad.com/l/mztaob?wanted=true" target="_blank" rel="noopener" class="btn-buy">Buy Now →</a>
     </div>
   </div>
 
@@ -430,7 +444,7 @@
     </div>
     <div class="book-footer">
       <div class="book-price">$6.99 <span>PDF download</span></div>
-      <a href="https://jwatbiz.gumroad.com/l/bcozhu" target="_blank" class="btn-buy btn-buy-gold">Get It Now →</a>
+      <a href="https://jwatbiz.gumroad.com/l/bcozhu?wanted=true" target="_blank" rel="noopener" class="btn-buy btn-buy-gold">Buy Now →</a>
     </div>
   </div>
 
@@ -453,7 +467,7 @@
     </div>
     <div class="book-footer">
       <div class="book-price">$9.99 <span>PDF download</span></div>
-      <a href="https://jwatbiz.gumroad.com/l/wddjtg" target="_blank" class="btn-buy">Get It Now →</a>
+      <a href="https://jwatbiz.gumroad.com/l/wddjtg?wanted=true" target="_blank" rel="noopener" class="btn-buy">Buy Now →</a>
     </div>
   </div>
 
@@ -492,13 +506,16 @@
 <section class="bundle-strip">
   <div class="bundle-inner">
     <h2>Get the <span>Complete Collection</span></h2>
-    <p>All 3 books. Every age from 8 to 18 covered. One purchase — instant download.</p>
+    <p>All 3 books. Every age from 8 to 18 covered. Pick each title below for instant digital checkout.</p>
     <div class="bundle-prices">
-      <span class="price-was">$26.97</span>
-      <span class="price-now">$21.99</span>
-      <span class="price-save">Save $5</span>
+      <span class="price-now">$26.97</span>
+      <span class="price-save">Full set</span>
     </div>
-    <a href="https://jwatbiz.gumroad.com" target="_blank" class="btn-bundle">Get All 3 Books →</a>
+    <div class="bundle-actions" aria-label="Buy the complete Intro Kids collection">
+      <a href="https://jwatbiz.gumroad.com/l/mztaob?wanted=true" target="_blank" rel="noopener" class="btn-bundle">The Money Game</a>
+      <a href="https://jwatbiz.gumroad.com/l/bcozhu?wanted=true" target="_blank" rel="noopener" class="btn-bundle">Lemonade Empire</a>
+      <a href="https://jwatbiz.gumroad.com/l/wddjtg?wanted=true" target="_blank" rel="noopener" class="btn-bundle">Money Before 18</a>
+    </div>
   </div>
 </section>
 
