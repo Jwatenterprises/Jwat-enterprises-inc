@@ -106,7 +106,7 @@ PARTNER_CAMPAIGNS = [
     },
 ]
 
-BLOG_SYSTEM_PROMPT = """You are a business growth expert writing for JWAT Enterprises Inc — an AI-powered business consulting firm based in Riverview, FL that helps small businesses and startups with sales, marketing, financial management, and sales funnel consulting.
+BLOG_SYSTEM_PROMPT = """You are a business growth expert writing for JWAT Enterprises Inc — an affiliate service partner platform based in Riverview, FL that helps small businesses choose practical tools for funding, credit, lead capture, CRM automation, and tax intake.
 
 Write SEO-optimized, value-first blog content that positions JWAT as the authority on small business growth. Tone: direct, professional, practical. No fluff. Every post must deliver real, actionable value.
 
@@ -114,13 +114,13 @@ Business details:
 - Company: JWAT Enterprises Inc
 - Owner: Wayne (CEO), Tiesha M Walters (President)
 - Website: https://www.jwatenterprisesinc.com
-- Booking: https://calendly.com/biz-jwatenterprisesinc
 - Email: biz@jwatenterprisesinc.com
 - Phone: 813-321-5686
 - Target: Startups and small/medium businesses
 - Revenue model: JWAT Enterprise Inc's main income is affiliate service partnerships.
 - Content priority: Every scheduled post must reinforce one service partner, educate the reader around a buying problem, and drive qualified clicks to that partner's link.
 - Partner posts should read like useful business guidance, not thin ads. Mention the assigned partner naturally and include the assigned partner link in the body at least twice.
+- Do not invite readers to book calls, strategy sessions, audits, consultations, or meetings with Wayne/JWAT. The CTA must send readers to the assigned service partner.
 - Do not repeat the same topic angle week after week. Rotate partner/service categories so Nav, ROK Financial, Upfirst, Tax Services, and GoHighLevel each receive ongoing lead-generation content.
 
 Design system (match exactly):
@@ -184,7 +184,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
             <a href="../index.html#partners">Partners</a>
             <a href="../index.html#tax">Tax Services</a>
             <a href="index.html">Blog</a>
-            <a href="../index.html#contact" class="nav-cta">Get Started</a>
+            <a href="../index.html#partners" class="nav-cta">Choose a Partner</a>
         </nav>
     </div>
 </header>
@@ -199,12 +199,12 @@ HTML_TEMPLATE = """<!DOCTYPE html>
     <div class="cta-box">
         <h3>CTA_HEADLINE_PLACEHOLDER</h3>
         <p>CTA_BODY_PLACEHOLDER</p>
-        <a href="CTA_URL_PLACEHOLDER" target="_blank" rel="noopener" class="cta-btn">CTA_LABEL_PLACEHOLDER &rarr;</a>
+        <a href="CTA_URL_PLACEHOLDER" target="_blank" rel="sponsored noopener" class="cta-btn">CTA_LABEL_PLACEHOLDER &rarr;</a>
     </div>
     <a href="index.html" class="back-link">&larr; Back to Blog</a>
 </article>
 <footer>
-    <p>&copy; YEAR_PLACEHOLDER JWAT Enterprises Inc &nbsp;&middot;&nbsp; <a href="https://www.jwatenterprisesinc.com">jwatenterprisesinc.com</a> &nbsp;&middot;&nbsp; <a href="mailto:biz@jwatenterprisesinc.com">biz@jwatenterprisesinc.com</a> &nbsp;&middot;&nbsp; <a href="https://www.facebook.com/profile.php?id=61567645495673" target="_blank" rel="noopener">Facebook</a> &nbsp;&middot;&nbsp; <a href="https://www.instagram.com/jwatenterprise/" target="_blank" rel="noopener">Instagram</a></p>
+    <p>&copy; YEAR_PLACEHOLDER JWAT Enterprises Inc &nbsp;&middot;&nbsp; <a href="https://www.jwatenterprisesinc.com">jwatenterprisesinc.com</a> &nbsp;&middot;&nbsp; <a href="mailto:biz@jwatenterprisesinc.com">biz@jwatenterprisesinc.com</a> &nbsp;&middot;&nbsp; <a href="https://www.facebook.com/profile.php?id=61567645495673" target="_blank" rel="noopener">Facebook</a> &nbsp;&middot;&nbsp; <a href="https://www.instagram.com/jwatenterprise/" target="_blank" rel="noopener">Instagram</a> &nbsp;&middot;&nbsp; <a href="https://www.linkedin.com/in/tiesha-m-walters-057994402/" target="_blank" rel="noopener">LinkedIn</a></p>
 </footer>
 </body>
 </html>"""
