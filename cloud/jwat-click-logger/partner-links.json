@@ -1,0 +1,27 @@
+{
+  "rok-financial": {
+    "label": "ROK Financial",
+    "category": "business_funding",
+    "url": "https://go.mypartner.io/business-financing/?ref=001Qk00000dxUurIAE"
+  },
+  "gohighlevel": {
+    "label": "GoHighLevel",
+    "category": "crm_automation",
+    "url": "https://affiliate.gohighlevel.com?sref=lb90qrm"
+  },
+  "upfirst": {
+    "label": "Upfirst",
+    "category": "ai_receptionist",
+    "url": "https://upfirst.ai?plid=135267"
+  },
+  "nav": {
+    "label": "Nav",
+    "category": "business_credit",
+    "url": "https://www.nav.com/"
+  },
+  "tax-services": {
+    "label": "Tax Services",
+    "category": "tax_services",
+    "url": "https://form.jotform.com/252615588759169"
+  }
+}
