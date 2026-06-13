@@ -2,48 +2,49 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.jwatenterprisesinc.com/</loc>
-    <lastmod>2026-06-04</lastmod>
+    <lastmod>2026-06-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://www.jwatenterprisesinc.com/recommended-tools.html</loc>
-    <lastmod>2026-06-04</lastmod>
+    <lastmod>2026-06-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.jwatenterprisesinc.com/intro-kids.html</loc>
-    <lastmod>2026-06-04</lastmod>
+    <lastmod>2026-06-13</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.jwatenterprisesinc.com/blog/</loc>
-    <lastmod>2026-06-07</lastmod>
-    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.jwatenterprisesinc.com/blog/introducing-intro-kids-financial-literacy.html</loc>
-    <lastmod>2026-06-07</lastmod>
+    <loc>https://www.jwatenterprisesinc.com/blog/</loc>
+    <lastmod>2026-06-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Blog Posts -->
+  <url>
+    <loc>https://www.jwatenterprisesinc.com/blog/upfirst-ai-phone-answering-small-business.html</loc>
+    <lastmod>2026-06-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.jwatenterprisesinc.com/resources/sales-audit-checklist.html</loc>
-    <lastmod>2026-06-04</lastmod>
+    <loc>https://www.jwatenterprisesinc.com/blog/introducing-intro-kids-financial-literacy.html</loc>
+    <lastmod>2026-06-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.jwatenterprisesinc.com/blog/build-personal-brand-attracts-clients-autopilot.html</loc>
+    <lastmod>2026-06-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.jwatenterprisesinc.com/blog/working-capital-vs-line-of-credit.html</loc>
-    <lastmod>2026-06-04</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.jwatenterprisesinc.com/blog/rok-financial-business-loan-funding.html</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -55,7 +56,7 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.jwatenterprisesinc.com/blog/upfirst-ai-phone-answering-small-business.html</loc>
+    <loc>https://www.jwatenterprisesinc.com/blog/rok-financial-business-loan-funding.html</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -74,8 +75,14 @@
   </url>
   <url>
     <loc>https://www.jwatenterprisesinc.com/blog/sba-vs-alternative-lending.html</loc>
-    <lastmod>2026-06-04</lastmod>
+    <lastmod>2026-06-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.jwatenterprisesinc.com/resources/sales-audit-checklist.html</loc>
+    <lastmod>2026-06-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
 </urlset>
