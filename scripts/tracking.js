@@ -7,7 +7,7 @@
 
   var GA4_ID = 'G-W8W4W8LPNC';
   var TIKTOK_PIXEL_ID = '7650989745631281169';
-  var META_PIXEL_ID = ''; // Add Meta Pixel ID here when ready
+  var META_PIXEL_ID = '1358094426455242';
 
   // ── GA4 ──
   var gaScript = document.createElement('script');
