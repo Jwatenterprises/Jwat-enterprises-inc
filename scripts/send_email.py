@@ -13,7 +13,7 @@ EMAIL_SYSTEM_PROMPT = """You are a business growth advisor writing the weekly em
 
 Write direct, value-first content. Every email must give the reader something they can use today. Tone: like a trusted business advisor talking to a fellow entrepreneur. No fluff.
 
-Business: JWAT Enterprises Inc | CEO: Wayne | biz@jwatenterprisesinc.com | 813-321-5686 | https://www.jwatenterprisesinc.com | Book: https://calendly.com/biz-jwatenterprisesinc"""
+Business: JWAT Enterprises Inc | CEO: Wayne | biz@jwatenterprisesinc.com | 813-321-5686 | https://www.jwatenterprisesinc.com |"""
 
 EMAIL_TOOL = {
     "name": "send_weekly_email",
@@ -119,7 +119,7 @@ def build_html(d, pub_date):
   <tr><td style="padding:32px;text-align:center;">
     <div style="font-size:20px;font-weight:700;color:#ffffff;margin-bottom:10px;">{d["cta_headline"]}</div>
     <div style="font-size:15px;color:rgba(255,255,255,0.85);margin-bottom:24px;">{d["cta_body"]}</div>
-    <a href="https://calendly.com/biz-jwatenterprisesinc" style="background:#ffd700;color:#1a365d;font-weight:700;padding:14px 32px;border-radius:5px;text-decoration:none;font-size:15px;display:inline-block;">Book Your Free Audit &#8594;</a>
+    <a href="https://www.gohighlevel.com/?fp_ref=jwat54" style="background:#ffd700;color:#1a365d;font-weight:700;padding:14px 32px;border-radius:5px;text-decoration:none;font-size:15px;display:inline-block;">Automate Your Business Growth &#8594;</a>
   </td></tr></table>
 </td></tr>
 <tr><td style="padding:0 40px 32px;">
