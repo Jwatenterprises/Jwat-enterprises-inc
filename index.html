@@ -671,7 +671,44 @@
         .optin-iframe-wrap iframe { display: block; width: 100%; border: none; }
         .optin-checklist-link { margin-top: 20px; font-size: 14px; color: rgba(255,255,255,0.65); }
         .optin-checklist-link a { color: var(--gold); font-weight: 600; text-decoration: none; }
-        .optin-checklist-link a:hover { text-decoration: underline; }    </style>
+        .optin-checklist-link a:hover { text-decoration: underline; }
+
+        /* ===== METRICS STRIP ===== */
+        .metrics-strip {
+            background: var(--dark);
+            padding: 40px 20px;
+        }
+        .metrics-inner {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .metric {
+            text-align: center;
+            min-width: 140px;
+        }
+        .metric-number {
+            font-size: 38px;
+            font-weight: 800;
+            color: var(--gold);
+            line-height: 1.1;
+        }
+        .metric-label {
+            font-size: 14px;
+            color: rgba(255,255,255,0.7);
+            margin-top: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        @media (max-width: 768px) {
+            .metrics-inner { justify-content: center; }
+            .metric { min-width: 120px; flex: 0 0 45%; }
+            .metric-number { font-size: 30px; }
+        }
+    </style>
     <script src="scripts/tracking.js"></script>
 </head>
 <body>
@@ -723,6 +760,28 @@
                 <div class="badge">✓ Expert Guidance</div>
                 <div class="badge">✓ Proven Results</div>
                 <div class="badge">✓ SMB Specialists</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== TRACTION METRICS ===== -->
+    <section class="metrics-strip">
+        <div class="metrics-inner">
+            <div class="metric">
+                <div class="metric-number">165+</div>
+                <div class="metric-label">Businesses Connected</div>
+            </div>
+            <div class="metric">
+                <div class="metric-number">190+</div>
+                <div class="metric-label">Engaged Leads</div>
+            </div>
+            <div class="metric">
+                <div class="metric-number">5</div>
+                <div class="metric-label">Partner Programs</div>
+            </div>
+            <div class="metric">
+                <div class="metric-number">24/7</div>
+                <div class="metric-label">AI-Powered Support</div>
             </div>
         </div>
     </section>
