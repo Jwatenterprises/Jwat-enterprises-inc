@@ -391,6 +391,127 @@
       min-width: 190px;
     }
 
+    /* ── LEAD MAGNET ── */
+    .lead-magnet {
+      background: var(--cream);
+      padding: 72px 24px;
+      text-align: center;
+    }
+    .lead-inner {
+      max-width: 620px;
+      margin: 0 auto;
+    }
+    .lead-tag {
+      display: inline-block;
+      background: rgba(244,196,48,0.15);
+      border: 1.5px solid var(--gold);
+      color: #b8860b;
+      font-weight: 800;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 5px 16px;
+      border-radius: 30px;
+      margin-bottom: 16px;
+    }
+    .lead-magnet h2 {
+      font-size: clamp(24px, 4vw, 36px);
+      font-weight: 900;
+      color: var(--navy);
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+    .lead-magnet p {
+      font-size: 16px;
+      color: var(--muted);
+      margin-bottom: 28px;
+      line-height: 1.6;
+    }
+    .lead-preview {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 4px 20px rgba(26,46,74,0.08);
+      margin-bottom: 32px;
+      text-align: left;
+    }
+    .lead-preview ul {
+      list-style: none;
+      padding: 0;
+    }
+    .lead-preview li {
+      padding: 8px 0;
+      font-size: 15px;
+      color: var(--navy);
+      font-weight: 700;
+      border-bottom: 1px solid rgba(26,46,74,0.06);
+    }
+    .lead-preview li:last-child { border-bottom: none; }
+    .lead-preview li::before {
+      content: '\2713';
+      color: var(--green);
+      font-weight: 900;
+      margin-right: 10px;
+    }
+    .lead-form {
+      display: flex;
+      gap: 10px;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+    .lead-form input[type="text"],
+    .lead-form input[type="email"] {
+      flex: 1;
+      padding: 14px 18px;
+      border: 2px solid rgba(26,46,74,0.12);
+      border-radius: 10px;
+      font-family: 'Nunito', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--navy);
+      outline: none;
+      transition: border 0.2s;
+    }
+    .lead-form input:focus {
+      border-color: var(--green);
+    }
+    .lead-form button {
+      background: var(--green);
+      color: var(--navy);
+      font-family: 'Nunito', sans-serif;
+      font-weight: 900;
+      font-size: 15px;
+      padding: 14px 28px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.15s, transform 0.15s;
+      white-space: nowrap;
+    }
+    .lead-form button:hover {
+      background: #27ae60;
+      transform: scale(1.03);
+    }
+    .lead-note {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 14px;
+    }
+    .lead-thanks {
+      display: none;
+      background: var(--green);
+      color: var(--navy);
+      padding: 20px 28px;
+      border-radius: 12px;
+      font-weight: 800;
+      font-size: 18px;
+      margin-top: 20px;
+    }
+    @media (max-width: 600px) {
+      .lead-form { flex-direction: column; }
+      .lead-form button { width: 100%; }
+    }
+
     /* ── FOOTER ── */
     footer {
       background: var(--navy);
@@ -591,14 +712,55 @@
   </div>
 </section>
 
+<!-- LEAD MAGNET -->
+<section class="lead-magnet" id="free-guide">
+  <div class="lead-inner">
+    <div class="lead-tag">Free for Parents</div>
+    <h2>7 Money Conversations to Start This Week</h2>
+    <p>A free printable guide with age-specific conversation starters, real-world scenarios, and follow-up questions that turn everyday moments into money lessons your kids actually remember.</p>
+    <div class="lead-preview">
+      <ul>
+        <li>The Grocery Store Budget Challenge (Ages 8–10)</li>
+        <li>"What Would You Do With $100?" Decision Tree (Ages 10–12)</li>
+        <li>The Real Cost of "Free" Apps Talk (Ages 10–14)</li>
+        <li>First Paycheck Breakdown Exercise (Ages 14–18)</li>
+        <li>Credit Card vs. Debit Card Dinner Conversation (Ages 13+)</li>
+        <li>The Emergency Fund Jar Activity (All Ages)</li>
+        <li>Parent Discussion Guide — Keeping the Conversation Going</li>
+      </ul>
+    </div>
+    <form class="lead-form" id="leadForm" action="https://formsubmit.co/introkids@jwatenterprisesinc.com" method="POST">
+      <input type="hidden" name="_subject" value="New Intro Kids Lead Magnet Signup">
+      <input type="hidden" name="_template" value="box">
+      <input type="hidden" name="_next" value="https://www.jwatenterprisesinc.com/intro-kids.html#thanks">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="text" name="name" placeholder="First name" required aria-label="First name">
+      <input type="email" name="email" placeholder="Your email" required aria-label="Email address">
+      <button type="submit">Get the Free Guide</button>
+    </form>
+    <p class="lead-note">No spam. Just money-smart parenting tips. Unsubscribe anytime.</p>
+    <div class="lead-thanks" id="leadThanks">Check your inbox — your free guide is on the way!</div>
+  </div>
+</section>
+
+<script>
+if (window.location.hash === '#thanks') {
+  var f = document.getElementById('leadForm');
+  var t = document.getElementById('leadThanks');
+  if (f) f.style.display = 'none';
+  if (t) t.style.display = 'block';
+  history.replaceState(null, '', window.location.pathname + '#free-guide');
+}
+</script>
+
 <!-- FOOTER -->
 <footer>
   <p>
     <strong style="color:white;">Intro Kids!</strong> is a financial literacy brand for children and teens.<br>
     Created by Tiesha M-Walters and Wayne Walters.<br>
     Published by <a href="https://www.jwatenterprisesinc.com">Jwat Enterprise Inc.</a> · Riverview, Florida<br>
-    Questions? <a href="mailto:biz@jwatenterprisesinc.com">biz@jwatenterprisesinc.com</a><br>
-    Follow Intro Kids: <a href="https://www.facebook.com/profile.php?id=61590533376957" target="_blank" rel="noopener">Facebook</a><br>
+    Questions? <a href="mailto:introkids@jwatenterprisesinc.com">introkids@jwatenterprisesinc.com</a><br>
+    Follow Intro Kids: <a href="https://www.facebook.com/profile.php?id=61590533376957" target="_blank" rel="noopener">Facebook</a> · <a href="https://www.tiktok.com/@introkidsus" target="_blank" rel="noopener">TikTok</a><br>
     Follow JWAT: <a href="https://www.facebook.com/profile.php?id=61567645495673" target="_blank" rel="noopener">Facebook</a> · <a href="https://www.instagram.com/jwatenterprise/" target="_blank" rel="noopener">Instagram</a> · <a href="https://www.linkedin.com/in/tiesha-m-walters-057994402/" target="_blank" rel="noopener">LinkedIn</a>
   </p>
 </footer>
