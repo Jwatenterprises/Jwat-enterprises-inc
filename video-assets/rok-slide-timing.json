@@ -1,0 +1,41 @@
+{
+  "slides": [
+    {
+      "slide": 1,
+      "start": 0.0,
+      "end": 5.6,
+      "vo_duration": 5.3
+    },
+    {
+      "slide": 2,
+      "start": 6.1,
+      "end": 17.2,
+      "vo_duration": 10.8
+    },
+    {
+      "slide": 3,
+      "start": 17.7,
+      "end": 27.5,
+      "vo_duration": 9.5
+    },
+    {
+      "slide": 4,
+      "start": 28.0,
+      "end": 37.8,
+      "vo_duration": 9.6
+    },
+    {
+      "slide": 5,
+      "start": 38.3,
+      "end": 47.5,
+      "vo_duration": 8.9
+    },
+    {
+      "slide": 6,
+      "start": 48.0,
+      "end": 54.5,
+      "vo_duration": 6.2
+    }
+  ],
+  "total_duration": 54.5
+}
