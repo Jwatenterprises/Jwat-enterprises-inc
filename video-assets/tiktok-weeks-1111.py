@@ -16,6 +16,7 @@ w = importlib.util.module_from_spec(spec); spec.loader.exec_module(w)
 W, text, pill, bullets, card, ad_tag, ROK, partner, _cta = w.W, w.text, w.pill, w.bullets, w.card, w.ad_tag, w.ROK, w.partner, w.cta
 GOLD, MUTED, RED, GREEN, NAV, GHL, wk1 = w.GOLD, w.MUTED, w.RED, w.GREEN, w.NAV, w.GHL, w.wk1
 NOVO = partner("novo.png")
+UPF = partner("upfirst.jpg")
 
 
 def cta(d, img, head, sub, logo, size=74):   # local copy of the 1102 CTA with a smaller headline (long headlines were clipped)
@@ -93,6 +94,33 @@ def h3(d, p, img):
     cta(d, img, "NEVER MISS A LEAD", "14-day free trial", GHL)
 
 
+# ---------- Fri 11/13 Upfirst: missed call = missed job (Wayne 11/1: Upfirst, not HighLevel) ----------
+# upfirst.ai/pricing 11/1: Starter $24.95/mo (30 calls), 14-day free trial; 24/7 answering (all calls, overflow or after hours),
+# call summaries by text/email, books appointments into Google/Outlook/Calendly etc., warm call transfer, spam blocking.
+def u1(d, p, img):
+    text(d, 470, "MISSED CALL", 100)
+    text(d, 590, "= MISSED JOB", 100, GOLD)
+    card(d, [90, 720, 525, 1200], "VOICEMAIL", "GONE", "they call the next guy", RED)
+    card(d, [555, 720, 990, 1200], "UPFIRST", "24/7", "even on a job", GREEN)
+    text(d, 1320, "The holiday rush won't wait.", 54, GOLD)
+
+
+def u2(d, p, img):
+    text(d, 470, "UPFIRST ANSWERS FOR YOU", 66, GOLD)
+    bullets(d, p, ["Picks up 24/7 or after hours", "Texts you a call summary", "Books the appointment", "Blocks spam calls"], 660, step=140, size=54)
+
+
+def u3(d, p, img):
+    text(d, 470, "UPFIRST STARTER", 90, GOLD)
+    text(d, 640, "$24.95", 160)
+    text(d, 790, "a month · 30 calls", 58)
+    text(d, 960, "14-DAY FREE TRIAL", 80, GOLD)
+
+
+def u4(d, p, img):
+    cta(d, img, "NEVER MISS A CALL", "14-day free trial", UPF)
+
+
 # ---------- Mon 11/16 ROK: year-end equipment ----------
 def k1(d, p, img):
     text(d, 470, "BUYING EQUIPMENT?", 92)
@@ -160,6 +188,12 @@ CFGS = {
         "HighLevel texts and emails new leads back automatically. The Starter plan is ninety seven dollars a month, with a fourteen day free trial.",
         "Don't let the holiday rush cost you jobs. Free trial, link in bio."],
         funcs=[ad_tag(f) for f in (h1, h2, h3)]),
+    "upf": dict(key="upf", slug="upfirst-missed-call", segments=[
+        "A missed call is a missed job. You're on a job, the call goes to voicemail, and they call the next company.",
+        "Upfirst answers your business line for you, around the clock or just after hours. You get a text with the call summary, and it can book the appointment.",
+        "The Starter plan is twenty four ninety five a month for thirty calls, with a fourteen day free trial.",
+        "Never miss a call this holiday rush. Free trial, link in bio."],
+        funcs=[ad_tag(f) for f in (u1, u2, u3, u4)]),
     "rok179": dict(key="rok179", slug="rok-year-end-equipment", segments=[
         "Buying equipment anyway? December thirty first matters. Section one seventy nine may let you deduct qualifying equipment you place in service this year, up to two point five six million dollars in twenty twenty six. Ask your tax pro.",
         "ROK Financial's equipment financing runs from ten thousand to five million dollars, with funding in two to five days according to ROK.",
