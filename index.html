@@ -934,7 +934,7 @@
                 <a href="blog/index.html">Blog</a>
                 <a href="#partners" class="nav-cta">Choose a Partner</a>
             </nav>
-            <div class="hamburger" onclick="toggleMenu()" aria-label="Toggle menu">
+            <div class="hamburger" onclick="toggleMenu()" role="button" tabindex="0" aria-label="Toggle menu" aria-controls="mobileNav" aria-expanded="false" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleMenu();}">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -951,6 +951,7 @@
     </header>
 
     <!-- ===== HERO ===== -->
+    <main id="main">
     <section class="hero">
         <div class="hero-container">
             <div class="hero-badge">AI-Powered Business Growth</div>
@@ -1155,7 +1156,7 @@
         <h2 style="font-size:32px;margin-bottom:14px;max-width:640px;margin-left:auto;margin-right:auto;">Is Your Sales Process Costing You Clients?</h2>
         <p style="font-size:17px;color:rgba(255,255,255,0.82);max-width:520px;margin:0 auto 32px;">Get the <strong style="color:var(--gold);">5-Minute Sales Audit Checklist</strong> &mdash; the exact 10 questions we use to find where small businesses are losing deals. Free. Instant.</p>
         <div class="optin-iframe-wrap">
-            <iframe src="https://55c343d5.sibforms.com/serve/MUIFAOrZ7IJa_Mxs8IeboYQku7SfliQFLMfZB91ZPZ3omUA1s58PfcsVTRJaxgMs_FrDhUmyktHkI7zeOYQsbSo6VMPoD6k20OohMT7g8F8ErZUbzMXoX-bGb_NKY2PYThFYOSUqoOj4PFYu-VbXhG1VKvDY5XjNbWaVFMN78ajnQlwaR_B1Akdgw3aNVLXJCAL-1qgf6CviNs5EmA==" width="540" height="380" frameborder="0" scrolling="auto" allowfullscreen></iframe>
+            <iframe title="Newsletter signup form" src="https://55c343d5.sibforms.com/serve/MUIFAOrZ7IJa_Mxs8IeboYQku7SfliQFLMfZB91ZPZ3omUA1s58PfcsVTRJaxgMs_FrDhUmyktHkI7zeOYQsbSo6VMPoD6k20OohMT7g8F8ErZUbzMXoX-bGb_NKY2PYThFYOSUqoOj4PFYu-VbXhG1VKvDY5XjNbWaVFMN78ajnQlwaR_B1Akdgw3aNVLXJCAL-1qgf6CviNs5EmA==" width="540" height="380" frameborder="0" scrolling="auto" allowfullscreen></iframe>
         </div>
         <p class="optin-checklist-link">Already subscribed? <a href="/resources/sales-audit-checklist.html">View the checklist directly &rarr;</a></p>
     </section>
@@ -1221,6 +1222,7 @@
             </div>
         </div>
     </section>
+    </main>
 
     <!-- ===== FOOTER ===== -->
     <footer>
@@ -1247,6 +1249,8 @@
         function toggleMenu() {
             const nav = document.getElementById('mobileNav');
             nav.classList.toggle('open');
+            const btn = document.querySelector('.hamburger');
+            if (btn) btn.setAttribute('aria-expanded', nav.classList.contains('open') ? 'true' : 'false');
         }
 
         // Close mobile menu on scroll
