@@ -745,6 +745,13 @@
         .why-direct { max-width: 760px; margin: 40px auto 0; background: var(--navy); color: white; border-radius: 10px; padding: 26px 28px; text-align: left; }
         .why-direct h3 { margin: 0 0 8px; font-size: 19px; color: var(--gold); }
         .why-direct p { margin: 0; font-size: 15px; line-height: 1.65; opacity: 0.92; }
+        .tools-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin-top: 40px; }
+        .tool-card { display: block; background: var(--navy); color: white; border-radius: 10px; padding: 24px; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; }
+        .tool-card:hover { transform: translateY(-3px); box-shadow: 0 8px 22px rgba(0,0,0,0.15); }
+        .tool-card .tool-tag { display: inline-block; background: var(--gold); color: var(--navy); font-size: 11px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; padding: 4px 10px; border-radius: 3px; margin-bottom: 10px; }
+        .tool-card strong { display: block; font-size: 20px; margin-bottom: 6px; }
+        .tool-card .tool-desc { display: block; font-size: 15px; line-height: 1.6; opacity: 0.9; margin-bottom: 12px; }
+        .tool-card .tool-go { color: var(--gold); font-weight: 700; font-size: 15px; }
         .partner-best { font-size: 14px !important; font-weight: 600; color: var(--navy) !important; background: #fff8e1; border-radius: 6px; padding: 8px 12px; }
         @media (max-width: 768px) {
             .partners-grid, .services-grid, .features-grid { gap: 18px; }
@@ -958,6 +965,7 @@
                 <a href="#why-us">Why Us</a>
                 <a href="#partners">Partners</a>
                 <a href="#tax">Tax Services</a>
+                <a href="#free-tools">Free Tools</a>
                 <a href="blog/index.html">Blog</a>
                 <a href="#partners" class="nav-cta">Choose a Partner</a>
             </nav>
@@ -972,6 +980,7 @@
             <a href="#why-us" onclick="toggleMenu()">Why Us</a>
             <a href="#partners" onclick="toggleMenu()">Partners</a>
             <a href="#tax" onclick="toggleMenu()">Tax Services</a>
+            <a href="#free-tools" onclick="toggleMenu()">Free Tools</a>
             <a href="blog/index.html" onclick="toggleMenu()">Blog</a>
             <a href="#partners" onclick="toggleMenu()">Partners</a>
         </div>
@@ -986,7 +995,7 @@
             <p>Tell us where you're stuck (cash, credit, banking, taxes or missed leads) and we point you to the vetted partner that fits. Free to use. You apply directly.</p>
             <p class="hero-sub">Free plain-English guides · Vetted partners · No sales calls · 24/7 AI line for questions</p>
             <div class="hero-buttons">
-                <a href="#how-it-works" class="cta-button">Find My Best Fit</a>
+                <a href="/tools/funding-match.html" class="cta-button">Take the 60-Second Funding Quiz</a>
                 <a href="https://go.mypartner.io/business-financing/?ref=001Qk00000dxUurIAE" target="_blank" rel="sponsored noopener" class="cta-button outline">Explore Funding Options</a>
             </div>
             <div class="trust-badges">
@@ -1030,6 +1039,20 @@
                 <a class="lane" href="#partner-upfirst"><strong>Missing calls while you're on the job?</strong><span>Get an AI receptionist with Upfirst →</span></a>
                 <a class="lane" href="#partner-ghl"><strong>Leads going cold after the first contact?</strong><span>Automate follow-up with GoHighLevel →</span></a>
                 <a class="lane" href="#tax"><strong>Tax season, back taxes or IRS letters?</strong><span>Start the tax intake →</span></a>
+            </div>
+            <div class="tools-strip" id="free-tools">
+                <a class="tool-card" href="/tools/funding-match.html">
+                    <span class="tool-tag">Free Tool · 60 sec</span>
+                    <strong>Funding Match Quiz</strong>
+                    <span class="tool-desc">5 questions about your business. See which funding, credit or banking option fits right now, and why.</span>
+                    <span class="tool-go">Take the quiz →</span>
+                </a>
+                <a class="tool-card" href="/tools/missed-call-calculator.html">
+                    <span class="tool-tag">Free Tool</span>
+                    <strong>Missed Call Revenue Calculator</strong>
+                    <span class="tool-desc">Enter your calls, missed rate and job value. See what unanswered calls may be costing you each month.</span>
+                    <span class="tool-go">Run the numbers →</span>
+                </a>
             </div>
             <div class="why-direct">
                 <h3>Why not just sign up with these companies directly?</h3>

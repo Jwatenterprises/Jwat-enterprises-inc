@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<title>Missed Call Revenue Calculator: What Unanswered Calls Cost You | JWAT</title>
+<link rel="canonical" href="https://www.jwatenterprisesinc.com/tools/missed-call-calculator.html" />
+<meta name="description" content="Free calculator: enter your weekly calls, how many you miss, your close rate and average job value to see how much revenue missed calls may be costing your business each month and year.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Missed Call Revenue Calculator: What Unanswered Calls Cost You | JWAT">
+<meta property="og:description" content="Enter your calls, missed rate, close rate and job value to see what missed calls may be costing you each month and year.">
+<meta property="og:url" content="https://www.jwatenterprisesinc.com/tools/missed-call-calculator.html">
+<meta property="og:image" content="https://www.jwatenterprisesinc.com/images/jwat-og-image.jpg">
+<meta property="og:site_name" content="JWAT Enterprises Inc">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Missed Call Revenue Calculator",
+  "url": "https://www.jwatenterprisesinc.com/tools/missed-call-calculator.html",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "description": "A free calculator that estimates how much revenue a small business may lose each month and year from unanswered phone calls.",
+  "publisher": { "@type": "Organization", "name": "JWAT Enterprises Inc", "url": "https://www.jwatenterprisesinc.com" }
+}
+</script>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+:root { --navy:#1a365d; --navy-light:#2d5a8c; --gold:#ffd700; --dark:#0d1b2a; }
+body { font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif; background:#f4f6f9; color:#333; }
+header { background:linear-gradient(135deg,var(--navy),var(--navy-light)); padding:16px 20px; text-align:center; }
+.logo { font-size:20px; font-weight:800; color:var(--gold); letter-spacing:1px; text-decoration:none; display:inline-block; }
+.logo span { display:block; font-size:10px; color:rgba(255,255,255,0.7); letter-spacing:2px; text-transform:uppercase; margin-top:3px; }
+.hero { background:linear-gradient(135deg,var(--navy),var(--navy-light)); color:white; padding:50px 20px 60px; text-align:center; }
+.hero-badge { display:inline-block; background:var(--gold); color:var(--navy); font-size:11px; font-weight:800; letter-spacing:2px; padding:5px 14px; border-radius:3px; margin-bottom:18px; text-transform:uppercase; }
+.hero h1 { font-size:34px; font-weight:800; max-width:660px; margin:0 auto 14px; line-height:1.3; }
+.hero p { font-size:17px; color:rgba(255,255,255,0.85); max-width:560px; margin:0 auto; line-height:1.6; }
+.container { max-width:760px; margin:-30px auto 40px; padding:0 16px; }
+.card { background:white; border-radius:12px; padding:32px; box-shadow:0 4px 20px rgba(0,0,0,0.08); }
+.grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+.field label { display:block; font-weight:700; color:var(--navy); font-size:15px; margin-bottom:4px; }
+.field small { display:block; font-size:13px; color:#666; margin-bottom:8px; line-height:1.4; }
+.field .in { display:flex; align-items:center; border:2px solid #e3e8ef; border-radius:8px; background:#f7f9fc; min-height:52px; }
+.field .in:focus-within { border-color:var(--gold); background:#fffbe6; }
+.field .in span { padding:0 12px; color:#555; font-weight:700; }
+.field input { flex:1; border:none; background:transparent; font-size:18px; padding:12px 12px; width:100%; font-family:inherit; color:#222; }
+.field input:focus { outline:none; }
+.out { margin-top:28px; background:var(--navy); color:white; border-radius:10px; padding:26px; text-align:center; }
+.out .lbl { font-size:13px; letter-spacing:1px; text-transform:uppercase; color:rgba(255,255,255,0.75); }
+.out .big { font-size:46px; font-weight:800; color:var(--gold); margin:6px 0 4px; }
+.out .row { display:flex; justify-content:center; gap:30px; flex-wrap:wrap; margin-top:14px; font-size:15px; color:rgba(255,255,255,0.9); }
+.out .row b { color:var(--gold); font-size:20px; display:block; }
+.math { font-size:13px; color:#666; margin-top:12px; line-height:1.6; }
+.fix { margin-top:28px; }
+.fix h2 { font-size:22px; color:var(--navy); margin-bottom:12px; }
+.fix p { font-size:16px; line-height:1.7; color:#444; margin-bottom:12px; }
+.opt { border:1px solid #e3e8ef; border-left:4px solid var(--gold); border-radius:8px; padding:18px; margin:14px 0; }
+.opt h3 { font-size:18px; color:var(--navy); margin-bottom:6px; }
+.opt p { font-size:15px; margin-bottom:10px; }
+.cta { display:flex; align-items:center; justify-content:center; background:var(--gold); color:var(--navy); font-weight:800; font-size:16px; padding:14px 22px; border-radius:6px; text-decoration:none; min-height:50px; }
+.cta:hover { background:#e6c200; }
+.cta.alt { background:white; border:2px solid var(--navy); color:var(--navy); }
+.guide { display:inline-block; margin-top:10px; color:var(--navy-light); font-weight:600; font-size:15px; }
+.note { font-size:13px; color:#777; line-height:1.6; margin-top:20px; }
+footer { text-align:center; padding:28px 16px; font-size:13px; color:#777; }
+footer a { color:var(--navy-light); }
+@media (max-width:600px) {
+  .hero h1 { font-size:26px; }
+  .card { padding:24px 18px; }
+  .grid { grid-template-columns:1fr; }
+  .out .big { font-size:38px; }
+}
+</style>
+<script src="/scripts/tracking.js"></script>
+</head>
+<body>
+<header>
+  <a class="logo" href="/">JWAT ENTERPRISES INC<span>Small Business Growth Partners</span></a>
+</header>
+
+<section class="hero">
+  <div class="hero-badge">Free Tool</div>
+  <h1>Missed Call Revenue Calculator</h1>
+  <p>How much could unanswered calls be costing your business? Put in your own numbers. The examples below are placeholders, not averages.</p>
+</section>
+
+<main class="container">
+  <div class="card">
+    <div class="grid">
+      <div class="field">
+        <label for="calls">Calls per week</label>
+        <small>New-customer calls, not vendors or spam.</small>
+        <div class="in"><input id="calls" type="number" inputmode="decimal" min="0" step="1" value="30"></div>
+      </div>
+      <div class="field">
+        <label for="missed">Calls you miss</label>
+        <small>Rings out, goes to voicemail, or comes in after hours.</small>
+        <div class="in"><input id="missed" type="number" inputmode="decimal" min="0" max="100" step="1" value="25"><span>%</span></div>
+      </div>
+      <div class="field">
+        <label for="close">Calls that become paying jobs</label>
+        <small>Out of the calls you DO answer.</small>
+        <div class="in"><input id="close" type="number" inputmode="decimal" min="0" max="100" step="1" value="30"><span>%</span></div>
+      </div>
+      <div class="field">
+        <label for="value">Average job value</label>
+        <small>What a typical new customer spends with you.</small>
+        <div class="in"><span>$</span><input id="value" type="number" inputmode="decimal" min="0" step="10" value="400"></div>
+      </div>
+    </div>
+
+    <div class="out" aria-live="polite">
+      <div class="lbl">Revenue you may be missing each month</div>
+      <div class="big" id="month">$0</div>
+      <div class="row">
+        <div><b id="year">$0</b>per year</div>
+        <div><b id="jobs">0</b>jobs per month</div>
+        <div><b id="missedCalls">0</b>missed calls per month</div>
+      </div>
+    </div>
+    <p class="math">How it's figured: calls per week × 4.33 weeks × % missed × % that become jobs × average job value. It assumes a missed caller would have booked at the same rate as the calls you answer. Many won't call back and will try the next business instead.</p>
+
+    <div class="fix">
+      <h2>Two ways to stop losing those calls</h2>
+      <div class="opt">
+        <h3>Answer every call: Upfirst AI receptionist</h3>
+        <p>Picks up 24/7 when you can't, answers common questions, takes messages and captures the caller's details, so you can call them back before they call someone else.</p>
+        <a class="cta" href="https://upfirst.ai?plid=135267" target="_blank" rel="sponsored noopener" data-partner="upfirst">Get an AI receptionist with Upfirst &rarr;</a>
+        <a class="guide" href="/blog/upfirst-ai-phone-answering-review-2026.html">Read our Upfirst pricing &amp; plans review &rarr;</a>
+      </div>
+      <div class="opt">
+        <h3>Follow up automatically: GoHighLevel</h3>
+        <p>Missed-call text-back, a CRM and automated follow-up in one place, so a missed call turns into a text conversation instead of a lost lead.</p>
+        <a class="cta alt" href="https://www.gohighlevel.com/?fp_ref=lb90qrm" target="_blank" rel="sponsored noopener" data-partner="ghl">Set up follow-up with GoHighLevel &rarr;</a>
+        <a class="guide" href="/blog/missed-calls-lost-revenue-small-business.html">Why missed calls cost more than you think &rarr;</a>
+      </div>
+      <p class="note">This calculator gives an estimate based only on the numbers you enter. It is not a guarantee of revenue. JWAT may earn a referral fee if you sign up through these links, at no extra cost to you. Need funding instead? Try the <a href="/tools/funding-match.html">Funding Match quiz</a>.</p>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <p>&copy; 2026 JWAT Enterprises Inc &middot; <a href="/">jwatenterprisesinc.com</a></p>
+</footer>
+
+<script>
+(function () {
+  var ids = ['calls', 'missed', 'close', 'value'], tracked = false;
+  function n(id, max) { var v = parseFloat(document.getElementById(id).value); if (!isFinite(v) || v < 0) v = 0; return max ? Math.min(v, max) : v; }
+  function money(v) { return '$' + Math.round(v).toLocaleString('en-US'); }
+  function calc() {
+    var missedCalls = n('calls') * 4.33 * n('missed', 100) / 100;
+    var jobs = missedCalls * n('close', 100) / 100;
+    var month = jobs * n('value');
+    document.getElementById('month').textContent = money(month);
+    document.getElementById('year').textContent = money(month * 12);
+    document.getElementById('jobs').textContent = jobs.toFixed(1);
+    document.getElementById('missedCalls').textContent = Math.round(missedCalls);
+  }
+  ids.forEach(function (id) {
+    document.getElementById(id).addEventListener('input', function () {
+      calc();
+      if (!tracked) { tracked = true; try { if (window.gtag) gtag('event', 'missed_call_calc_used'); } catch (e) {} }
+    });
+  });
+  document.querySelectorAll('a.cta').forEach(function (a) {
+    a.addEventListener('click', function () { try { if (window.gtag) gtag('event', 'missed_call_calc_partner_click', { partner: a.getAttribute('data-partner') }); } catch (e) {} });
+  });
+  calc();
+})();
+</script>
+</body>
+</html>
