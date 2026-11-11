@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<title>Share Your Story | JWAT Enterprises</title>
+<link rel="canonical" href="https://www.jwatenterprisesinc.com/share-your-story.html" />
+<meta name="description" content="Used Nav, ROK Financial, Novo, Upfirst, GoHighLevel or tax services through JWAT? Share what changed for your business. We only publish with your permission.">
+<meta name="robots" content="noindex, follow">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+:root { --navy:#1a365d; --navy-light:#2d5a8c; --gold:#ffd700; }
+body { font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif; background:#f4f6f9; color:#333; }
+header { background:linear-gradient(135deg,var(--navy),var(--navy-light)); padding:16px 20px; text-align:center; }
+.logo { font-size:20px; font-weight:800; color:var(--gold); letter-spacing:1px; text-decoration:none; display:inline-block; }
+.logo span { display:block; font-size:10px; color:rgba(255,255,255,0.7); letter-spacing:2px; text-transform:uppercase; margin-top:3px; }
+.hero { background:linear-gradient(135deg,var(--navy),var(--navy-light)); color:white; padding:46px 20px 56px; text-align:center; }
+.hero h1 { font-size:32px; font-weight:800; max-width:620px; margin:0 auto 12px; line-height:1.3; }
+.hero p { font-size:17px; color:rgba(255,255,255,0.85); max-width:540px; margin:0 auto; line-height:1.6; }
+.container { max-width:680px; margin:-28px auto 40px; padding:0 16px; }
+.card { background:white; border-radius:12px; padding:30px; box-shadow:0 4px 20px rgba(0,0,0,0.08); }
+.f { margin-bottom:18px; }
+.f label { display:block; font-weight:700; color:var(--navy); font-size:15px; margin-bottom:6px; }
+.f label em { font-weight:400; color:#777; font-style:normal; font-size:13px; }
+.f input, .f select, .f textarea { width:100%; border:2px solid #e3e8ef; border-radius:8px; background:#f7f9fc; font-size:16px; padding:12px; font-family:inherit; color:#222; min-height:48px; }
+.f textarea { min-height:110px; resize:vertical; }
+.f input:focus, .f select:focus, .f textarea:focus { outline:none; border-color:var(--gold); background:#fffbe6; }
+.radio label { display:flex; gap:10px; align-items:flex-start; font-weight:400; color:#333; margin:8px 0; cursor:pointer; }
+.radio input { width:auto; min-height:0; margin-top:4px; }
+button { width:100%; background:var(--gold); color:var(--navy); border:none; border-radius:8px; font-size:17px; font-weight:800; padding:15px; min-height:52px; cursor:pointer; font-family:inherit; }
+button:hover { background:#e6c200; }
+.err { color:#b00020; font-size:14px; margin-top:10px; display:none; }
+.note { font-size:13px; color:#777; line-height:1.6; margin-top:16px; }
+.after { display:none; background:#fff8e1; border-left:4px solid var(--gold); border-radius:6px; padding:14px 16px; margin-top:16px; font-size:15px; line-height:1.6; }
+footer { text-align:center; padding:26px 16px; font-size:13px; color:#777; }
+footer a { color:var(--navy-light); }
+@media (max-width:600px) { .hero h1 { font-size:25px; } .card { padding:22px 16px; } }
+</style>
+<script src="/scripts/tracking.js"></script>
+</head>
+<body>
+<header><a class="logo" href="/">JWAT ENTERPRISES INC<span>Small Business Growth Partners</span></a></header>
+<section class="hero">
+  <h1>Share Your Story</h1>
+  <p>Did a partner you found through JWAT help your business? Tell us what changed. We only publish stories with your permission, and we'll email you before anything goes live.</p>
+</section>
+<main class="container">
+  <form class="card" id="story" novalidate>
+    <div class="f"><label for="fn">First name</label><input id="fn" required autocomplete="given-name"></div>
+    <div class="f"><label for="biz">Business name <em>(optional)</em></label><input id="biz" autocomplete="organization"></div>
+    <div class="f"><label for="ind">Industry</label><input id="ind" placeholder="e.g. HVAC, cleaning, bakery, trucking"></div>
+    <div class="f"><label for="partner">Which partner did you use?</label>
+      <select id="partner"><option>Nav</option><option>ROK Financial</option><option>Novo</option><option>Upfirst</option><option>GoHighLevel</option><option>Tax services</option><option>Other</option></select></div>
+    <div class="f"><label for="before">What was the problem before?</label><textarea id="before" required></textarea></div>
+    <div class="f"><label for="afterTxt">What changed after?</label><textarea id="afterTxt" required></textarea></div>
+    <div class="f"><label for="nums">Any numbers you're comfortable sharing <em>(optional)</em></label><input id="nums" placeholder="e.g. time saved, calls answered, funding amount"></div>
+    <div class="f radio"><label style="font-weight:700;color:var(--navy);">May we publish your story?</label>
+      <label><input type="radio" name="perm" value="Yes, JWAT may publish my story with my first name and business name"> Yes, with my first name and business name</label>
+      <label><input type="radio" name="perm" value="Yes, but first name only"> Yes, but first name only</label>
+      <label><input type="radio" name="perm" value="No, do not publish, just sharing"> No, don't publish, I'm just sharing</label></div>
+    <button type="submit">Send my story</button>
+    <p class="err" id="err">Please fill in your first name, both story boxes, and choose a publishing option.</p>
+    <div class="after" id="after">Your email app should now open with your story filled in. Just press <strong>Send</strong>. If nothing opened, email it to <a href="mailto:biz@jwatenterprisesinc.com">biz@jwatenterprisesinc.com</a>.</div>
+    <p class="note">This page doesn't store anything: your story goes straight from your own email to biz@jwatenterprisesinc.com. We never publish without your permission, and you can ask us to remove a story at any time.</p>
+  </form>
+</main>
+<footer><p>&copy; 2026 JWAT Enterprises Inc &middot; <a href="/">jwatenterprisesinc.com</a></p></footer>
+<script>
+document.getElementById('story').addEventListener('submit', function (e) {
+  e.preventDefault();
+  function v(id) { return document.getElementById(id).value.trim(); }
+  var perm = document.querySelector('input[name="perm"]:checked');
+  var err = document.getElementById('err');
+  if (!v('fn') || !v('before') || !v('afterTxt') || !perm) { err.style.display = 'block'; return; }
+  err.style.display = 'none';
+  var body = 'First name: ' + v('fn') + '\nBusiness: ' + (v('biz') || '-') + '\nIndustry: ' + (v('ind') || '-') +
+    '\nPartner: ' + v('partner') + '\n\nBefore:\n' + v('before') + '\n\nAfter:\n' + v('afterTxt') +
+    '\n\nNumbers: ' + (v('nums') || '-') + '\n\nPermission: ' + perm.value + '\n';
+  var subject = 'My JWAT story (' + v('partner') + ')';
+  try { if (window.gtag) gtag('event', 'story_submit_click', { partner: v('partner') }); } catch (x) {}
+  window.location.href = 'mailto:biz@jwatenterprisesinc.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+  document.getElementById('after').style.display = 'block';
+});
+</script>
+</body>
+</html>
