@@ -1675,6 +1675,7 @@
                     { t: "\uD83D\uDCC8 My sales & funnels aren\u2019t converting",         n: "sales" },
                     { t: "\uD83C\uDFAF My marketing isn\u2019t generating enough leads",   n: "marketing" },
                     { t: "\uD83D\uDCB0 I need funding or stronger business credit",        n: "finance" },
+                    { t: "\uD83E\uDDED Not sure where to start? Take the 60-second quiz", n: "go", l: "/tools/funding-match.html", i: true },
                     { t: "\uD83D\uDE80 I keep missing calls and losing leads",             n: "formation" },
                     { t: "\uD83C\uDFDB\uFE0F I need help with taxes",                      n: "tax" },
                     { t: "\uD83E\uDD16 Just browsing \u2014 tell me more about JWAT",      n: "about" }
@@ -1707,13 +1708,15 @@
                     { t: "\uD83C\uDFE6 My business credit is weak \u2014 I need to build it",  n: "nav" },
                     { t: "\uD83D\uDCB5 I need a business loan or working capital now",          n: "rok" },
                     { t: "\uD83D\uDD04 Both \u2014 I need credit AND capital",                  n: "both_fin" },
-                    { t: "\uD83E\uDD14 I\u2019m not sure what I qualify for",                   n: "finance_unsure" }
+                    { t: "\uD83E\uDD14 I\u2019m not sure what I qualify for",                   n: "finance_unsure" },
+                    { t: "\uD83E\uDDED Take the 60-second Funding Match Quiz \u2192", n: "go", l: "/tools/funding-match.html", i: true, g: true }
                 ]
             },
 
             finance_unsure: {
                 msg: "No worries \u2014 that\u2019s actually the most common answer, and it\u2019s completely fixable.\n\nHere\u2019s what I recommend: start with Nav to see exactly where your business credit stands today. It\u2019s free, takes 2 minutes, and gives you a clear picture of what you qualify for. Then we can talk funding options.\n\nShall we start there?",
                 opts: [
+                    { t: "\uD83E\uDDED Take the 60-second Funding Match Quiz \u2192", n: "go", l: "/tools/funding-match.html", i: true, g: true },
                     { t: "\uD83C\uDFE6 Yes \u2014 check my business credit with Nav \u2192",   n: "go", l: "https://nav.nkwcmr.net/c/6782322/1813107/2410", g: true },
                     { t: "Tell me more about business loans first",                            n: "rok" }
                 ]
@@ -1724,6 +1727,7 @@
                 opts: [
                     { t: "\uD83D\uDE80 Get My AI Receptionist \u2192",             n: "go", l: "https://upfirst.ai?plid=135267", g: true },
                     { t: "What exactly does Upfirst handle?",                              n: "formation_info" },
+                    { t: "\uD83E\uDDEE How much are missed calls costing me? \u2192", n: "go", l: "/tools/missed-call-calculator.html", i: true },
                     { t: "I\u2019m already registered \u2014 I need other help",           n: "start" }
                 ]
             },
@@ -1754,13 +1758,14 @@
             },
 
             about: {
-                msg: "I love this question. \uD83D\uDE04\n\nJWAT Enterprises is Wayne\u2019s AI-powered business consulting firm built specifically for startups and small businesses. Most consultants pick one lane \u2014 Wayne built a 4-in-1 solution:\n\n\uD83D\uDCC8 Sales & Funnel Strategy\n\uD83C\uDFAF Marketing Optimization\n\uD83D\uDCB0 Financial Management & Business Credit\n\uD83C\uDFDB\uFE0F Tax Services\n\nAnd I\u2019m Cassidy \u2014 available 24/7 so no one ever waits for answers.\n\nWhat part of your business do you want to tackle first?",
+                msg: "I love this question. \uD83D\uDE04\n\nJWAT Enterprises is a small business growth partner. We point owners to the right vetted partner for each problem, explain it in plain English, and you apply directly, free. We cover:\n\n\uD83D\uDCC8 Sales & Funnel Strategy\n\uD83C\uDFAF Marketing Optimization\n\uD83D\uDCB0 Funding, Business Credit & Banking\n\uD83C\uDFDB\uFE0F Tax Services\n\nAnd I\u2019m Cassidy \u2014 available 24/7 so no one ever waits for answers.\n\nWhat part of your business do you want to tackle first?",
                 opts: [
                     { t: "\uD83D\uDCC8 Sales & Funnels",         n: "sales" },
                     { t: "\uD83C\uDFAF Marketing",               n: "marketing" },
                     { t: "\uD83D\uDCB0 Financing & Credit",       n: "finance" },
                     { t: "\uD83C\uDFDB\uFE0F Tax Services",       n: "tax" },
-                    { t: "\u26A1 Start GoHighLevel",             n: "ghl" }
+                    { t: "\u26A1 Start GoHighLevel",             n: "ghl" },
+                    { t: "\uD83E\uDDED Take the 60-second Funding Match Quiz \u2192", n: "go", l: "/tools/funding-match.html", i: true, g: true }
                 ]
             },
 
@@ -1874,6 +1879,7 @@
                 b.onclick = function() {
                     addMsg(o.t, 'user');
                     c.innerHTML = '';
+                    if (o.l && o.i) { window.location.href = o.l; return; }
                     if (o.l) {
                         window.open(o.l, '_blank');
                         setTimeout(function() {
