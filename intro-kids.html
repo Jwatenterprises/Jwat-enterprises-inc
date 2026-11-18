@@ -796,6 +796,20 @@
       outline: none;
       transition: border 0.2s;
     }
+    .lead-form select {
+      flex: 1 1 100%;
+      padding: 14px 18px;
+      border: 2px solid rgba(26,46,74,0.12);
+      border-radius: 10px;
+      font-family: 'Nunito', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--navy);
+      background: var(--white);
+    }
+    .lead-form { flex-wrap: wrap; }
+    .lead-form button { flex: 1 1 100%; }
+    .lead-form select:focus,
     .lead-form input:focus {
       border-color: var(--green);
     }
@@ -1083,6 +1097,15 @@
       <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
       <input type="text" name="name" placeholder="First name" required aria-label="First name">
       <input type="email" name="email" placeholder="Your email" required aria-label="Email address">
+      <input type="hidden" name="offer" value="guide">
+      <select name="role" required aria-label="I am a">
+        <option value="" disabled selected>I am a...</option>
+        <option>Parent</option>
+        <option>Homeschool parent</option>
+        <option>Grandparent or caregiver</option>
+        <option>Teacher</option>
+        <option>Principal or school admin</option>
+      </select>
       <button type="submit">Get the Free Guide</button>
     </form>
     <p class="lead-note">We'll email you the guide plus occasional money-smart parenting tips. No spam. Unsubscribe anytime.</p>
@@ -1099,6 +1122,55 @@ if (window.location.hash === '#thanks') {
   history.replaceState(null, '', window.location.pathname + '#free-guide');
 }
 </script>
+
+<!-- TEACHER KIT -->
+<section class="lead-magnet" id="classroom-kit" style="background:var(--white)">
+  <div class="lead-inner">
+    <div class="lead-tag">Free for Teachers &amp; Schools</div>
+    <h2>The Classroom Money Kit (Grades 4&ndash;8)</h2>
+    <p>Five ready-to-teach, 20-minute lessons on how money really works, with a printable for each lesson and a take-home Family Money Sheet. No prep beyond printing. Free to copy for your class.</p>
+    <div class="lead-preview">
+      <ul>
+        <li>Lesson 1: Where Does Money Come From? &mdash; the value chain</li>
+        <li>Lesson 2: Needs, Wants and Trade-offs &mdash; the $100 month</li>
+        <li>Lesson 3: The Three Jars &mdash; spend, save, give</li>
+        <li>Lesson 4: Prices, Costs and Profit &mdash; run a stand</li>
+        <li>Lesson 5: Smart Choices with Real Prices &mdash; unit price detectives</li>
+      </ul>
+    </div>
+    <form class="lead-form" id="kitForm" action="https://formsubmit.co/introkids@jwatenterprisesinc.com" method="POST">
+      <input type="hidden" name="_subject" value="New Intro Kids Lead Magnet Signup">
+      <input type="hidden" name="_template" value="box">
+      <input type="hidden" name="_next" value="https://www.jwatenterprisesinc.com/intro-kids.html#kit-thanks">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+      <input type="text" name="name" placeholder="First name" required aria-label="First name">
+      <input type="email" name="email" placeholder="School or work email" required aria-label="Email address">
+      <input type="hidden" name="offer" value="kit">
+      <select name="role" required aria-label="I am a">
+        <option value="" disabled selected>I am a...</option>
+        <option>Teacher</option>
+        <option>Principal or school admin</option>
+        <option>Homeschool co-op leader</option>
+        <option>Other educator</option>
+      </select>
+      <button type="submit">Get the Free Kit</button>
+    </form>
+    <p class="lead-note">We'll email you the kit plus occasional classroom money ideas. No spam. Unsubscribe anytime.</p>
+    <div class="lead-thanks" id="kitThanks">Thanks! Your Classroom Money Kit is on its way. Check your inbox within the hour (and your spam folder, just in case).</div>
+  </div>
+</section>
+
+<script>
+if (window.location.hash === '#kit-thanks') {
+  var kf = document.getElementById('kitForm');
+  var kt = document.getElementById('kitThanks');
+  if (kf) kf.style.display = 'none';
+  if (kt) kt.style.display = 'block';
+  history.replaceState(null, '', window.location.pathname + '#classroom-kit');
+}
+</script>
+
 
 <!-- FAQ (AEO) -->
 <section class="faq-section" id="faq">
